@@ -1,7 +1,7 @@
 import React from 'react';
 import AddModal from './AddModal';
-import NavBar from './NavBar'
-import '../style/ProductHeader.css'
+import NavBar from '../NavBar'
+import '../../style/ProductHeader.css'
 
 class ProductHeader extends React.Component{
     render(){

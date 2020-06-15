@@ -1,0 +1,20 @@
+.list{
+    padding-top:40px ;
+    padding-left:10% ;
+    padding-right:10% 
+}
+
+.buttons{
+    float: right;
+    padding:0;
+    margin: 0;
+}
+
+.icons{
+
+}
+
+.buttonsCol{
+    padding: 0;
+    margin:0;
+}

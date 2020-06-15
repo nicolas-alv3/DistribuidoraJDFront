@@ -3,12 +3,12 @@ import TextField from '@material-ui/core/TextField';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Swal from 'sweetalert2';
-import API from '../service/api.js'
+import API from '../../service/api.js';
+import '../../style/AddModal.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import '../style/AddModal.css';
 
 export default class AddModal extends React.Component {
   state={
