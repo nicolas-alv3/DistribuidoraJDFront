@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
+import { Switch, Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import ProductHeader from './components/ProductHeader';
 
 function App() {
   return (
-    <div className="App">
-      <NavBar/>
-    </div>
+    <BrowserRouter>
+      <Switch>
+         <Route exact path="/product" render={(props) => <ProductHeader {...props}/>} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
