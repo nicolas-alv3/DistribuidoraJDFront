@@ -1,3 +1,7 @@
+.error{
+    color: red
+}
+
 .form{
     margin-left: 20px;
     margin-right: 20px;
@@ -5,11 +9,9 @@
 
 .textField{
     width: 45%;
+    padding: 2%;
 }
 
-.nameField{
-    width: 90%;
-}
 .Row {
     align-content: center;
     display: table;
