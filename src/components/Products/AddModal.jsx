@@ -17,8 +17,8 @@ export default class AddModal extends React.Component {
       open: false,
       name: '',
       code: 0,
-      unitPrice: '',
-      packagePrice: '',
+      unitPrice: 0,
+      packagePrice: 0,
       amountPerPackage: 0,
       stock: 0,
     };
@@ -91,10 +91,17 @@ export default class AddModal extends React.Component {
   }
 
   render() {
+    // Importante: PONER ESTE IS VALID DENTRO DEL RENDER,SINO NO FUNCIONA
+    const isValid = this.state.code > 0
+    && this.state.name !== ''
+    && this.state.unitPrice > 0
+    && this.state.packagePrice > 0
+    && this.state.stock >= 0
+    && this.state.amountPerPackage > 0;
     return (
       <div>
         <div className="add">
-          <Fab color="primary" aria-label="add" onClick={this.openDialog.bind(this)}>
+          <Fab color="primary" aria-label="add" onClick={() => this.openDialog()}>
             <AddIcon />
           </Fab>
         </div>
@@ -102,26 +109,26 @@ export default class AddModal extends React.Component {
           <DialogTitle>Agregar producto</DialogTitle>
           <form className="form" noValidate autoComplete="off">
             <div className="Row">
-              <TextField className="textField" type="number" required id="standard-name" label="Codigo" onChange={(e) => this.handleCode(e)} />
-              <TextField className="textField" required id="standard-name" label="Nombre" onChange={(e) => this.handleName(e)} />
+              <TextField value={this.state.code} className="textField" type="number" required id="standard-name" label="Codigo" onChange={(e) => this.handleCode(e)} />
+              <TextField value={this.state.name} className="textField" required id="standard-name" label="Nombre" onChange={(e) => this.handleName(e)} />
             </div>
             <div className="Row">
-              <TextField type="number" className="textField" required id="standard-name" label="Stock" onChange={(e) => this.handleStock(e)} />
-              <TextField value={this.state.priceWrapper} className="textField" required id="standard-name" label="Precio unitario" onChange={(e) => this.handleUnitPrice(e)} />
+              <TextField value={this.state.stock} type="number" className="textField" required id="standard-name" label="Stock" onChange={(e) => this.handleStock(e)} />
+              <TextField value={this.state.unitPrice} type="number" className="textField" required id="standard-name" label="Precio unitario" onChange={(e) => this.handleUnitPrice(e)} helperText="Mayor a cero" />
             </div>
             <div className="Row">
-              <TextField className="textField" required id="standard-name" label="Precio por bulto" onChange={(e) => this.handlePackagePrice(e)} />
-              <TextField type="number" className="textField" required id="standard-name" label="Cantidad por bulto" onChange={(e) => this.handleAmount(e)} />
+              <TextField value={this.state.packagePrice} type="number" className="textField" required id="standard-name" label="Precio por bulto" onChange={(e) => this.handlePackagePrice(e)} />
+              <TextField value={this.state.amountPerPackage} type="number" className="textField" required id="standard-name" label="Cantidad por bulto" onChange={(e) => this.handleAmount(e)} helperText="Mayor a cero" />
             </div>
             <div className="Row">
               <div className="Column">
-                <Fab className="confirm" color="primary" aria-label="add">
-                  <CheckIcon onClick={this.post.bind(this)} />
+                <Fab className="confirm" disabled={!isValid} color="primary" aria-label="add" onClick={() => this.post()}>
+                  <CheckIcon />
                 </Fab>
               </div>
               <div className="Column">
                 <Fab className="confirm" color="primary" aria-label="add">
-                  <CancelIcon onClick={this.closeDialog.bind(this)} />
+                  <CancelIcon onClick={() => this.closeDialog()} />
                 </Fab>
               </div>
             </div>

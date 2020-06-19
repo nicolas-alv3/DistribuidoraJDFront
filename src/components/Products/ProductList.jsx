@@ -1,5 +1,4 @@
 import React from 'react';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
@@ -57,7 +56,7 @@ export default class ProductList extends React.Component {
         </div>
         <div className="buttonsCol col">
           <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(product)}>
-            <DeleteIcon style={{"color":"red"}} />
+            <DeleteIcon style={{ color: 'red' }} />
           </Button>
         </div>
       </div>
