@@ -8,7 +8,12 @@
 }
 
 .textField{
-    width: 45%;
+    width: 50%;
+    padding: 2%;
+}
+
+.name{
+    width: 100%;
     padding: 2%;
 }
 
@@ -29,7 +34,12 @@
     margin-left: 60%
 }
 
+.container{
+    position: relative;
+}
+
 .confirm{
-    outline: none;
-    margin: auto;
+  margin: 0;
+  position: absolute;
+  left: 40%;
 }

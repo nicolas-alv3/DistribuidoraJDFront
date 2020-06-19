@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import EditModal from './EditModal';
 import '../../style/ProductList.css';
 import API from '../../service/api';
+import { parsePesos } from '../../utils/utils';
 
 export default class ProductList extends React.Component {
   constructor(props) {
@@ -80,9 +81,9 @@ export default class ProductList extends React.Component {
           <div className="row">
             <div className="col">{product.code}</div>
             <div className="col">{product.name}</div>
-            <div className="col">{product.unitPrice}</div>
-            <div className="col">{product.packagePrice}</div>
-            <div className="col">{product.stock}</div>
+            <div className="col">{parsePesos(product.unitPrice.toString())}</div>
+            <div className="col">{product.packageDiscount}%</div>
+            <div className="col">{product.stock}u.</div>
             <div className="col">{this.buttons(product)}</div>
           </div>
         </li>
@@ -97,7 +98,7 @@ export default class ProductList extends React.Component {
           <div className="col">Código</div>
           <div className="col">Nombre</div>
           <div className="col">Precio unitario</div>
-          <div className="col">Precio por bulto</div>
+          <div className="col">Desc. mayorista</div>
           <div className="col">Stock</div>
           <div className="col" />
         </div>
