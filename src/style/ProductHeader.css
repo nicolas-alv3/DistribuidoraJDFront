@@ -11,3 +11,9 @@
     display: inline-block;
     margin-left: 10%
 }
+
+.add-stock{
+    display: fixed;
+    text-align: center;
+    margin-left: 60%
+}

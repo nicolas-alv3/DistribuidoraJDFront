@@ -29,7 +29,7 @@
 }
 
 .add{
-    display: block;
+    display: inline-block;
     text-align: center;
     margin-left: 60%
 }

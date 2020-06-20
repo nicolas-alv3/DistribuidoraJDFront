@@ -106,7 +106,7 @@ export default class AddModal extends React.Component {
     && this.state.stock >= 0
     && this.state.amountPerPackage > 0;
     return (
-      <div>
+      <div className="add-column">
         <div className="add">
           <Fab color="primary" aria-label="add" onClick={() => this.openDialog()}>
             <AddIcon />

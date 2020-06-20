@@ -16,13 +16,13 @@ export default class AddModal extends React.Component {
     super(props);
     this.state = {
       open: false,
-      code: '',
-      name: '',
-      unitPrice: '',
-      packageDiscount: '', // Porcentual
-      amountForDiscount: '',
-      amountPerPackage: '',
-      stock: '',
+      code: this.props.product.code,
+      name: this.props.product.name,
+      unitPrice: this.props.product.unitPrice,
+      packageDiscount: this.props.product.packageDiscount, // Porcentual
+      amountForDiscount: this.props.product.amountForDiscount,
+      amountPerPackage: this.props.product.amountPerPackage,
+      stock: this.props.product.stock,
     };
   }
 
