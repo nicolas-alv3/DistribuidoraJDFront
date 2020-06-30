@@ -84,7 +84,7 @@ class AddStockModal extends React.Component {
     const body = this.getBody();
     API.post(`/product/changeStock/${this.state.code}`, body)
       .then(() => this.success())
-      .catch((e) => this.error());
+      .catch(() => this.error());
   }
 
   render() {

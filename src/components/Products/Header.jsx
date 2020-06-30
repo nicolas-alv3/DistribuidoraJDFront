@@ -1,25 +1,25 @@
 import React from 'react';
-import AddStockModal from '../Stock/AddStockModal';
-import AddModal from './AddModal';
 import NavBar from '../NavBar';
-import '../../style/ProductHeader.css';
+import '../../style/Header.css';
 
-class ProductHeader extends React.Component {
+class Header extends React.Component {
   render() {
     return (
       <div>
         <NavBar />
         <div className="Row">
           <div className="Column">
-            <h1 className="product Column">Productos</h1>
+            <h1 className="product Column">{this.props.category}</h1>
           </div>
           <div className="Column" />
           <div className="Row">
             <div className="Column">
-              <AddStockModal />
+              {this.props.button1}
             </div>
             <div className="Column">
-              <AddModal />
+              <div className="add">
+                {this.props.button2}
+              </div>
             </div>
           </div>
         </div>
@@ -28,4 +28,4 @@ class ProductHeader extends React.Component {
   }
 }
 
-export default ProductHeader;
+export default Header;

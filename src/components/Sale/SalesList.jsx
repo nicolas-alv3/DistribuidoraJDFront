@@ -2,31 +2,33 @@ import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
-import EditModal from './EditModal';
+import Pages from '../Pages';
 import '../../style/ProductList.css';
+import '../../style/Pagination.css';
 import API from '../../service/api';
 import { parsePesos } from '../../utils/utils';
-import Pages from '../Pages';
 
-export default class ProductList extends React.Component {
+export default class SalesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      sales: [],
       page: 0,
       totalPages: 0,
     };
   }
 
   componentDidMount() {
-    API.get(`/product/all/${this.state.page}`)
-      .then((res) => this.setState({ products: res.content, totalPages: res.totalPages }))
+    API.get(`/sale/all/${this.state.page}`)
+      .then((res) => this.setState({ sales: res }))
       .catch((e) => console.log(e));
   }
 
   handleChangePage(value) {
-    API.get(`/product/all/${value - 1}`)
-      .then((res) => this.setState({ products: res.content, totalPages: res.totalPages, page: res.pageable.pageNumber }))
+    API.get(`/sale/all/${value - 1}`)
+      .then((res) => this.setState(
+        { sales: res.content, totalPages: res.totalPages, page: res.pageable.pageNumber },
+      ))
       .catch((e) => console.log(e));
   }
 
@@ -62,9 +64,6 @@ export default class ProductList extends React.Component {
     return (
       <div className="row">
         <div className="buttonsCol col">
-          <EditModal product={product} />
-        </div>
-        <div className="buttonsCol col">
           <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(product)}>
             <DeleteIcon style={{ color: 'red' }} />
           </Button>
@@ -83,17 +82,17 @@ export default class ProductList extends React.Component {
     return '';
   }
 
-  mapProducts() {
-    return this.state.products.map(
-      (product) => (
-        <li key={product.code} className={`list-group-item ${this.cssClass(product)}`}>
+  mapsales() {
+    return this.state.sales.map(
+      (sale) => (
+        <li className="list-group-item">
           <div className="row">
-            <div className="col">{product.code}</div>
-            <div className="col">{product.name}</div>
-            <div className="col">{parsePesos(product.unitPrice.toString())}</div>
-            <div className="col">{product.packageDiscount}%</div>
-            <div className="col">{product.stock}u.</div>
-            <div className="col">{this.buttons(product)}</div>
+            <div className="col">{sale.id}</div>
+            <div className="col">{sale.clientName}</div>
+            <div className="col">{sale.date}</div>
+            <div className="col">{sale.amountOfProducts}</div>
+            <div className="col">{parsePesos(sale.totalPrice.toString())}</div>
+            <div className="col">{this.buttons(sale)}</div>
           </div>
         </li>
       ),
@@ -105,10 +104,10 @@ export default class ProductList extends React.Component {
       <li className="list-group-item list-group-item-secondary">
         <div className="row">
           <div className="col">Código</div>
-          <div className="col">Nombre</div>
-          <div className="col">Precio unitario</div>
-          <div className="col">Desc. mayorista</div>
-          <div className="col">Stock</div>
+          <div className="col">Cliente</div>
+          <div className="col">Fecha</div>
+          <div className="col">Cant. Productos</div>
+          <div className="col">Monto total</div>
           <div className="col" />
         </div>
       </li>
@@ -116,8 +115,8 @@ export default class ProductList extends React.Component {
   }
 
   renderList() {
-    if (this.state.products.length > 0) {
-      return <div>{this.listHeader()}{this.mapProducts()}</div>;
+    if (this.state.sales.length > 0) {
+      return <div>{this.listHeader()}{this.mapsales()}</div>;
     }
     return <h3>Actualmente no dispone de productos</h3>;
   }
