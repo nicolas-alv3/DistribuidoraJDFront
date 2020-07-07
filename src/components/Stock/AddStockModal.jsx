@@ -45,11 +45,13 @@ class AddStockModal extends React.Component {
   }
 
   handleCodeChange(e) {
-    e.preventDefault();
+    // TODO: Ordenar promises para el barcode
+    if (e.target.value.length === 13) {
+      API.get(`/product/${e.target.value}`)
+        .then((res) => this.setState({ product: res }))
+        .catch(() => this.setState({ product: { name: 'Producto inexistente' } }));
+    }
     this.setState({ code: e.target.value });
-    API.get(`/product/${e.target.value}`)
-      .then((res) => this.setState({ product: res }))
-      .catch(() => console.log());
   }
 
   handleQuantity(e) {
@@ -58,8 +60,8 @@ class AddStockModal extends React.Component {
   }
 
   packages() {
-    return `${Math.floor(this.state.quantity / this.state.product.amountPerPackage)} bulto(s),
-    ${this.state.quantity % this.state.product.amountPerPackage} unidad(es)`;
+    return `${Math.floor(this.state.quantity / this.state.product.amountPerPackage || 0)} bulto(s),
+    ${this.state.quantity % this.state.product.amountPerPackage || 0} unidad(es)`;
   }
 
   success() {
@@ -88,9 +90,10 @@ class AddStockModal extends React.Component {
   }
 
   render() {
-    const isValid = this.state.code > 0 && this.state.quantity > 0;
     const btnVariant = this.state.addButton ? 'primary' : '';
     const btnVariantm = this.state.addButton ? '' : 'primary';
+    const isCodeError = this.state.product.name === 'Producto inexistente';
+    const isValid = this.state.code > 0 && this.state.quantity > 0 && !isCodeError;
     return (
       <div>
         <Button className="add-stock" variant="outlined" onClick={() => this.showModal(true)}>Modificar stock</Button>
@@ -98,7 +101,7 @@ class AddStockModal extends React.Component {
           <DialogTitle>Editar stock</DialogTitle>
           <form className="form" noValidate autoComplete="off">
             <div className="Row">
-              <TextField value={this.state.code} className="textField" required id="standard-name" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
+              <TextField error={isCodeError} type="number" value={this.state.code} className="textField" required id="standard-name" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
               <TextField value={this.state.product.name} disabled className="textField" required id="standard-name" label="Nombre" />
             </div>
             <div className="Row">

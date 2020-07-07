@@ -3,13 +3,19 @@
     width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
     border-spacing: 10px; /*Optional*/
+    padding:0;
+    margin: 0;
 }
 .Column {
     display: table-cell;
+    padding:0;
+    margin: 0;
 }
-.product{
+.category{
     display: inline-block;
-    margin-left: 10%
+    margin: 0;
+    margin-left: 10%;
+    padding:0;
 }
 
 .add-stock{

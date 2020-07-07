@@ -1,0 +1,68 @@
+.clientBox{
+    border:1px solid whitesmoke ;
+    padding:2%;
+    border-radius: 10px;
+    display: inline-block;
+    width: 60%;
+    margin: 0 2.5%;
+    position: relative;
+    bottom: 60px
+}
+
+.detailsBox{
+    border:1px solid whitesmoke ;
+    padding:2%;
+    border-radius: 10px;
+    display: inline-block;
+    width: 25%;
+    height: 150px;
+    overflow: auto;
+    margin: 0 2.5%
+}
+
+.field {
+    margin: auto;
+    position: relative;
+    top:8px
+}
+
+.divider{
+    display: inline-block;
+    width: auto;
+    position: relative;
+    top: 25px;
+    height: 20px !important;
+}
+
+.clientInput{
+    margin:auto 10px !important;
+}
+
+.detailsInput{
+    margin:auto 10px !important;
+    width: 100%;
+}
+
+.list{
+    padding-top:40px ;
+    padding-left:10% ;
+    padding-right:10% 
+}
+
+.searchIcon{
+    display: inline;
+    width: auto;
+    height: auto;
+    margin-top:20px
+}
+
+.searchField{
+    display:inline;
+    width:80%
+}
+
+.cantField{
+    display:inline;
+    margin:2% !important;
+    width:45%
+}

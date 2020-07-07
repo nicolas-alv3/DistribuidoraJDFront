@@ -73,10 +73,10 @@ export default class AddModal extends React.Component {
     window.location.reload();
   }
 
-  error() {
+  error(message) {
     Swal.fire(
       'Uy',
-      'Hubo un error',
+      message,
       'error',
     );
   }
@@ -94,7 +94,7 @@ export default class AddModal extends React.Component {
     };
     API.put('/product', body)
       .then(() => this.productUpdated())
-      .catch((e) => this.error(e));
+      .catch((e) => this.error(e.response.data));
   }
 
   render() {

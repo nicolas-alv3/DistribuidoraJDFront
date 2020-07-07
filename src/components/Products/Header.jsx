@@ -9,7 +9,7 @@ class Header extends React.Component {
         <NavBar />
         <div className="Row">
           <div className="Column">
-            <h1 className="product Column">{this.props.category}</h1>
+            <h1 className="category Column">{this.props.category}</h1>
           </div>
           <div className="Column" />
           <div className="Row">
