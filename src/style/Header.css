@@ -1,25 +1,28 @@
-.Row {
-    display: table;
-    width: 100%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    border-spacing: 10px; /*Optional*/
-    padding:0;
-    margin: 0;
+.header-container {
+    display: block;
+    border-bottom: .5px solid lightgray;
+    margin:1% 2%;
 }
-.Column {
-    display: table-cell;
-    padding:0;
-    margin: 0;
-}
+
 .category{
     display: inline-block;
     margin: 0;
-    margin-left: 10%;
+    margin-left: 5%;
     padding:0;
+    width: 70%;
+    height: 60px;
+    line-height: inherit;
 }
 
-.add-stock{
-    display: fixed;
-    text-align: center;
-    margin-left: 60%
+.button1 {
+    display: inline-block;
+    margin:0;
+    padding:0;
+    width:20%;
+}
+
+.button2 {
+    display: inline-block;
+    float:right;
+    padding:0;
 }

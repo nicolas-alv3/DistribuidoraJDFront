@@ -113,14 +113,14 @@ class AddStockModal extends React.Component {
             </div>
             <div className="Row">
               <div className="Column">
-                <div className="container">
+                <div className="button-container">
                   <Fab className="confirm" disabled={!isValid} color="primary" aria-label="add" onClick={() => this.post()}>
                     <CheckIcon />
                   </Fab>
                 </div>
               </div>
               <div className="Column">
-                <div className="container">
+                <div className="button-container">
                   <Fab className="confirm" style={{ color: '#3f51b5' }} aria-label="close" onClick={() => this.showModal(false)}>
                     <CancelIcon stye={{ color: 'blue' }} />
                   </Fab>

@@ -1,7 +1,7 @@
 function parsePesos(str) {
   // Requiere que el string este bien formado, Un solo $ y solo un punto
   if (str.length > 0 && str[0] !== '$') {
-    return Number(str).toLocaleString('ARG', { style: 'currency', currency: 'ARS' });
+    return Number(str).toLocaleString('es-ar', { style: 'currency', currency: 'ARS' });
   }
   return str;
 }

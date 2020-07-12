@@ -1,5 +1,8 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
+import SeeIcon from '@material-ui/icons/Visibility';
+import EmptyIcon from '@material-ui/icons/NoteAddOutlined';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import Pages from '../Pages';
@@ -8,7 +11,7 @@ import '../../style/Pagination.css';
 import API from '../../service/api';
 import { parsePesos } from '../../utils/utils';
 
-export default class SalesList extends React.Component {
+class SalesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +23,7 @@ export default class SalesList extends React.Component {
 
   componentDidMount() {
     API.get(`/sale/all/${this.state.page}`)
-      .then((res) => this.setState({ sales: res }))
+      .then((res) => this.setState({ sales: res.content }))
       .catch((e) => console.log(e));
   }
 
@@ -60,26 +63,28 @@ export default class SalesList extends React.Component {
     });
   }
 
-  buttons(product) {
+  pushToSee(sale) {
+    this.props.history.push({
+      pathname: '/seeSale',
+      state: {
+        sale,
+      },
+    });
+  }
+
+  buttons(sale) {
     return (
       <div className="row">
         <div className="buttonsCol col">
-          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(product)}>
+          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(sale)}>
             <DeleteIcon style={{ color: 'red' }} />
+          </Button>
+          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.pushToSee(sale)}>
+            <SeeIcon style={{ color: 'lightblue' }} />
           </Button>
         </div>
       </div>
     );
-  }
-
-  cssClass(product) {
-    if (product.stock === 0) {
-      return 'list-group-item-light';
-    }
-    if (product.stock < 10) {
-      return 'list-group-item-warning';
-    }
-    return '';
   }
 
   mapsales() {
@@ -88,7 +93,7 @@ export default class SalesList extends React.Component {
         <li className="list-group-item">
           <div className="row">
             <div className="col">{sale.id}</div>
-            <div className="col">{sale.clientName}</div>
+            <div className="col">{sale.client.name || 'Sin nombre'}</div>
             <div className="col">{sale.date}</div>
             <div className="col">{sale.amountOfProducts}</div>
             <div className="col">{parsePesos(sale.totalPrice.toString())}</div>
@@ -118,7 +123,16 @@ export default class SalesList extends React.Component {
     if (this.state.sales.length > 0) {
       return <div>{this.listHeader()}{this.mapsales()}</div>;
     }
-    return <h3>Actualmente no dispone de productos</h3>;
+    return (
+      <div>
+        <h3 className="emptyList">
+          No tienes ventas registradas, ¿Empezamos?
+        </h3>
+        <div className="container">
+          <EmptyIcon className="emptyIcon" onClick={() => this.props.history.push('addSale')} />
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -132,3 +146,5 @@ export default class SalesList extends React.Component {
     );
   }
 }
+
+export default withRouter(SalesList);

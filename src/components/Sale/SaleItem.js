@@ -49,4 +49,12 @@ export default class SaleItem {
   getDescription() {
     return this.product.name;
   }
+
+  getDTO() {
+    return { code: this.product.code, amount: this.getTotalAmount() };
+  }
+
+  isError() {
+    return this.getTotalAmount() > this.product.stock;
+  }
 }

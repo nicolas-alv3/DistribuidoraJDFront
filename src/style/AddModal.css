@@ -10,7 +10,7 @@
 .textField{
     width: 48%;
     padding: 2%;
-    margin: auto 1% !important
+    margin: 2% 1% !important
 }
 
 .name{
@@ -18,31 +18,17 @@
     padding: 2%;
 }
 
-.Row {
-    align-content: center;
-    display: table;
-    width: 100%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-}
-.Column {
-    display: table-cell;
-    padding-top:0px !important;
+.add-button-container{
+    display: block;
+    margin:2% 0
 }
 
-.add{
+.add-check {
     display: inline-block;
-    text-align: center;
-    margin-left: 60%;
-    position: relative;
-    right: 5px
+    margin-left: 25%
 }
 
-.container{
-    position: relative;
-}
-
-.confirm{
-  margin: 0;
-  position: absolute;
-  left: 40%;
+.add-cancel {
+    display: inline-block;
+    margin-left: 30%
 }

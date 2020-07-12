@@ -7,20 +7,13 @@ class Header extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className="Row">
-          <div className="Column">
-            <h1 className="category Column">{this.props.category}</h1>
+        <div className="header-container">
+          <h1 className="category ">{this.props.category}</h1>
+          <div className="button1">
+            {this.props.button1}
           </div>
-          <div className="Column" />
-          <div className="Row">
-            <div className="Column">
-              {this.props.button1}
-            </div>
-            <div className="Column">
-              <div className="add">
-                {this.props.button2}
-              </div>
-            </div>
+          <div className="button2">
+            {this.props.button2}
           </div>
         </div>
       </div>

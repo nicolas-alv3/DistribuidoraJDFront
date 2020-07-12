@@ -3,3 +3,12 @@
     box-shadow: none !important;
     padding-top: 5%
 }
+
+.add-stock {
+    position: relative;
+    bottom:7px
+}
+
+.button-container {
+    position: relative
+}

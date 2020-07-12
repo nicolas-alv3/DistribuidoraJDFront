@@ -1,5 +1,6 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EmptyIcon from '@material-ui/icons/NoteAddOutlined'; 
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import EditModal from './EditModal';
@@ -119,7 +120,16 @@ export default class ProductList extends React.Component {
     if (this.state.products.length > 0) {
       return <div>{this.listHeader()}{this.mapProducts()}</div>;
     }
-    return <h3>Actualmente no dispone de productos</h3>;
+    return (
+      <div>
+        <h3 className="emptyList">
+          No tienes productos registrados, ¿Empezamos?
+        </h3>
+        <div className="empty-container">
+          <EmptyIcon className="emptyIcon" />
+        </div>
+      </div>
+    );
   }
 
   render() {

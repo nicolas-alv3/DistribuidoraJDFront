@@ -10,8 +10,29 @@
     margin: 0;
 }
 
-.icons{
+.emptyList {
+    margin:auto;
+    padding:2% 5%;
+    display: block;
+    text-align:center;
+    color:gray
+}
 
+.container {
+    height: 200px;
+}
+
+.empty-container {
+    display: block;
+    width: 100%
+}
+
+.emptyIcon {
+    font-size: 150pt !important;
+    margin:auto !important;
+    color:gray;
+    position: relative;
+    left:40%
 }
 
 .buttonsCol{
