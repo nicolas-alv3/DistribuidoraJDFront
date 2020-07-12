@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Divider from '@material-ui/core/Divider';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SendIcon from '@material-ui/icons/Send';
 import SearchIcon from '@material-ui/icons/Search';
@@ -14,6 +16,10 @@ import '../../style/AddSale.css';
 import { parsePesos } from '../../utils/utils.js';
 import API from '../../service/api';
 import SaleItem from './SaleItem';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default class AddSale extends React.Component {
   constructor(props) {
@@ -114,9 +120,13 @@ export default class AddSale extends React.Component {
     }, 1);
   }
 
+  existCodeInItems() {
+    return this.state.items.map((i) => i.getCode()).includes(parseInt(this.state.code));
+  }
+
   sendCurrentItem() {
     if (this.state.code && this.state.description) {
-      this.state.items.push(this.state.currentItem);
+      if (!this.existCodeInItems()) { this.state.items.push(this.state.currentItem); } else { this.setState({ snackBar: true }); }
       this.setState({
         code: '',
         currentItem: this.defaultItem(),
@@ -290,7 +300,7 @@ export default class AddSale extends React.Component {
           <div className="col">
             <TextField error={quantityError} className="cantField" value={this.state.packageAmount} type="text" label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
             <Divider className="vertical-divider" orientation="vertical" />
-            <TextField error={quantityError} helperText={this.errorHelperText(quantityError)} className="cantField" value={this.state.unitAmount} type="text" label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
+            <TextField error={quantityError} className="cantField" value={this.state.unitAmount} type="text" label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
           </div>
           <div className="col field">{this.state.currentItem.getPackageDiscount()}%</div>
           <div className="col field">{parsePesos(this.state.currentItem.getUnitPrice().toString())}</div>
@@ -308,6 +318,20 @@ export default class AddSale extends React.Component {
     );
   }
 
+  snackBar() {
+    return (
+      <Snackbar
+        open={this.state.snackBar}
+        autoHideDuration={6000}
+        onClose={() => this.setState({ snackBar: false })}
+      >
+        <Alert variant="outlined" onClose={() => this.setState({ snackBar: false })} severity="error">
+          Ya cargaste este producto en la venta, edítalo.
+        </Alert>
+      </Snackbar>
+    );
+  }
+
   render() {
     const quantityError = this.state.currentItem.isError();
     const disabledButton = this.state.items.length <= 0;
@@ -322,6 +346,7 @@ export default class AddSale extends React.Component {
           {this.renderFooter()}
         </ul>
         {this.sendSaleButton(disabledButton)}
+        {this.snackBar()}
       </div>
     );
   }
