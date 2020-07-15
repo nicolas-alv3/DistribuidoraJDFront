@@ -9,6 +9,17 @@
     bottom:7px
 }
 
-.button-container {
-    position: relative
+.stock-button-container{
+    display: block;
+    margin:2% 0
+}
+
+.stock-check {
+    display: inline-block;
+    margin-left: 25%
+}
+
+.stock-cancel {
+    display: inline-block;
+    margin-left: 30%
 }

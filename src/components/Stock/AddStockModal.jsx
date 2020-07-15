@@ -89,6 +89,33 @@ class AddStockModal extends React.Component {
       .catch(() => this.error());
   }
 
+  buttons(isValid) {
+    return (
+      <div className="stock-button-container">
+        <div className="stock-check">
+          <Fab
+            className="stock-check"
+            disabled={!isValid}
+            color="primary"
+            aria-label="stock"
+            onClick={() => this.post()}
+          >
+            <CheckIcon />
+          </Fab>
+        </div>
+        <div className="stock-cancel">
+          <Fab
+            style={{ color: '#3f51b5' }}
+            aria-label="close"
+            onClick={() => this.showModal(false)}
+          >
+            <CancelIcon stye={{ color: 'blue' }} />
+          </Fab>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const btnVariant = this.state.addButton ? 'primary' : '';
     const btnVariantm = this.state.addButton ? '' : 'primary';
@@ -111,22 +138,7 @@ class AddStockModal extends React.Component {
               </ButtonGroup>
               <TextField value={this.state.quantity} type="number" className="textField" required id="standard-name" label="Cantidad en unidades" helperText={this.packages()} onChange={(e) => this.handleQuantity(e)} />
             </div>
-            <div className="Row">
-              <div className="Column">
-                <div className="button-container">
-                  <Fab className="confirm" disabled={!isValid} color="primary" aria-label="add" onClick={() => this.post()}>
-                    <CheckIcon />
-                  </Fab>
-                </div>
-              </div>
-              <div className="Column">
-                <div className="button-container">
-                  <Fab className="confirm" style={{ color: '#3f51b5' }} aria-label="close" onClick={() => this.showModal(false)}>
-                    <CancelIcon stye={{ color: 'blue' }} />
-                  </Fab>
-                </div>
-              </div>
-            </div>
+            {this.buttons(isValid)}
           </form>
         </Dialog>
       </div>

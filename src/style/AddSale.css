@@ -1,3 +1,63 @@
+.add-sale-code-header {
+    width:13%;
+    text-align: center;
+}
+
+.add-sale-description-header {
+    width:25%;
+    text-align: center;
+}
+
+.add-sale-quantity-header {
+    width:20%;
+    text-align: center;
+}
+
+.add-sale-package-discount-header {
+    width:10%;
+    text-align: center;
+}
+
+.add-sale-unit-price-header {
+    width:12%;
+    text-align: center;
+}
+
+.add-sale-total-price-header {
+    width:10%;
+    text-align: center;
+}
+
+.add-sale-code {
+    width:13%;
+}
+
+.add-sale-description {
+    width:25%
+}
+
+.add-sale-quantity {
+    width:20%
+}
+
+.add-sale-package-discount {
+    width:10%;
+    text-align:center;
+    margin-top:25px
+}
+
+.add-sale-unit-price {
+    width:10%;
+    text-align:center;
+    margin-top:25px
+}
+
+.add-sale-total-price {
+    width:12%;
+    text-align:center;
+    margin-top:25px
+}
+
 .clientBox{
     border:1px solid whitesmoke ;
     padding:2%;
@@ -32,6 +92,7 @@
 
 .header{
     font-size: 15pt;
+    height: 70px;
     background-color: #a3aff5
 }
 
@@ -98,13 +159,9 @@
     background-color:teal!important;
 }
 
-.col.dcol {
-    width: 20px
-}
-
 .searchIcon{
     display: inline;
-    width: auto;
+    width: 30%;
     height: auto;
     margin-top:20px
 }
@@ -115,7 +172,7 @@
 }
 
 .cantField{
-    display:inline;
+    display:inline-block;
     margin:2% !important;
-    width:45%
+    width:29%
 }

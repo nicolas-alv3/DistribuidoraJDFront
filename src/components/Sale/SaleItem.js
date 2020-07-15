@@ -9,6 +9,10 @@ export default class SaleItem {
     this.unitQuantity = n;
   }
 
+  getStock() {
+    return this.product.stock;
+  }
+
   setByPackage(n) {
     this.packageQuantity = n;
   }

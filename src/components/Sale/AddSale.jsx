@@ -18,6 +18,7 @@ import API from '../../service/api';
 import SaleItem from './SaleItem';
 
 function Alert(props) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
@@ -36,6 +37,7 @@ export default class AddSale extends React.Component {
       packageAmount: 0,
       description: '',
       allNames: [],
+      snackbarMessage: '',
     };
     this.handleEnter.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -124,9 +126,25 @@ export default class AddSale extends React.Component {
     return this.state.items.map((i) => i.getCode()).includes(parseInt(this.state.code));
   }
 
+  showCorrectMessage() {
+    if (this.existCodeInItems()) {
+      this.setState({ snackBar: true, snackbarMessage: 'Ya cargaste este producto en la venta, edítalo.' });
+    } else {
+      this.setState({ snackBar: true, snackbarMessage: 'Stock insuficiente:/' });
+    }
+  }
+
+  checkErrors() {
+    if (!this.existCodeInItems() && !this.state.currentItem.isError()) {
+      this.state.items.push(this.state.currentItem);
+    } else {
+      this.showCorrectMessage();
+    }
+  }
+
   sendCurrentItem() {
     if (this.state.code && this.state.description) {
-      if (!this.existCodeInItems()) { this.state.items.push(this.state.currentItem); } else { this.setState({ snackBar: true }); }
+      this.checkErrors();
       this.setState({
         code: '',
         currentItem: this.defaultItem(),
@@ -246,7 +264,7 @@ export default class AddSale extends React.Component {
           value={this.state.description}
           type="text"
           style={{
-            width: '70%', display: 'inline-block', position: 'absolute', bottom: '5px',
+            width: '70%', display: 'inline-block',position:'relative',top:'-25px'
           }}
           getOptionLabel={(option) => option}
           label="Descripción"
@@ -258,17 +276,35 @@ export default class AddSale extends React.Component {
     );
   }
 
+  snackBar() {
+    return (
+      <Snackbar
+        open={this.state.snackBar}
+        autoHideDuration={6000}
+        onClose={() => this.setState({ snackBar: false })}
+      >
+        <Alert
+          variant="outlined"
+          style={{ background: 'white' }}
+          onClose={() => this.setState({ snackBar: false })}
+          severity="error"
+        >
+          {this.state.snackbarMessage}
+        </Alert>
+      </Snackbar>
+    );
+  }
+
   renderHeader() {
     return (
       <li className="list-group-item header" key={-1}>
-        <div className="row header">
-          <div className="col">Código</div>
-          <div className="col">Descripción</div>
-          <div className="col">Cantidad</div>
-          <div className="col">Bonificación</div>
-          <div className="col">Precio unitario</div>
-          <div className="col">Subtotal</div>
-          <div className="lcol" />
+        <div className="row">
+          <div className="add-sale-code-header">Código</div>
+          <div className="add-sale-description-header">Descripción</div>
+          <div className="add-sale-quantity-header">Cantidad</div>
+          <div className="add-sale-package-discount-header">Bonificación</div>
+          <div className="add-sale-unit-price-header">P. unitario</div>
+          <div className="add-sale-total-price-header">Subtotal</div>
         </div>
       </li>
     );
@@ -279,12 +315,12 @@ export default class AddSale extends React.Component {
       (item) => (
         <li key={item.getCode()} className="list-group-item">
           <div className="row">
-            <div className="col">{item.getCode()}</div>
-            <div className="col">{item.getDescription()}</div>
-            <div className="col">{item.getTotalAmount()} u.</div>
-            <div className="col">{item.getPackageDiscount()}%</div>
-            <div className="col">{parsePesos(item.getUnitPrice())}</div>
-            <div className="col">{parsePesos(item.getTotalPrice().toString())}<DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} /></div>
+            <div className="add-sale-code-header">{item.getCode()}</div>
+            <div className="add-sale-description-header">{item.getDescription()}</div>
+            <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
+            <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
+            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice())}</div>
+            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}<DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} /></div>
           </div>
         </li>
       ),
@@ -295,16 +331,19 @@ export default class AddSale extends React.Component {
     return (
       <li className="list-group-item get" key={-2}>
         <div className="row">
-          <div className="col">{this.searchCodeInput()}</div>
-          <div className="col">{this.searchDescriptionInput()}</div>
-          <div className="col">
+          <div className="add-sale-code">{this.searchCodeInput()}</div>
+          <div className="add-sale-description">{this.searchDescriptionInput()}</div>
+          <div className="add-sale-quantity">
             <TextField error={quantityError} className="cantField" value={this.state.packageAmount} type="text" label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
             <Divider className="vertical-divider" orientation="vertical" />
             <TextField error={quantityError} className="cantField" value={this.state.unitAmount} type="text" label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
+            <TextField disabled error={quantityError} className="cantField" value={`${this.state.currentItem.getStock() || 0} u.`} type="text" label="Stock" />
           </div>
-          <div className="col field">{this.state.currentItem.getPackageDiscount()}%</div>
-          <div className="col field">{parsePesos(this.state.currentItem.getUnitPrice().toString())}</div>
-          <div className="col field">{parsePesos(this.state.currentItem.getTotalPrice().toString())}<SendIcon className="sendIcon" onClick={() => this.sendCurrentItem()} /></div>
+          <div className="add-sale-package-discount">{this.state.currentItem.getPackageDiscount()}%</div>
+          <div className="add-sale-unit-price">{parsePesos(this.state.currentItem.getUnitPrice().toString())}</div>
+          <div className="add-sale-total-price">{parsePesos(this.state.currentItem.getTotalPrice().toString())}
+            <SendIcon className="sendIcon" onClick={() => this.sendCurrentItem()} />
+          </div>
         </div>
       </li>
     );
@@ -315,20 +354,6 @@ export default class AddSale extends React.Component {
       <li className="list-group-item footer" key={0}>
         <div className="totalPrice">Total: ${this.totalPrice()}</div>
       </li>
-    );
-  }
-
-  snackBar() {
-    return (
-      <Snackbar
-        open={this.state.snackBar}
-        autoHideDuration={6000}
-        onClose={() => this.setState({ snackBar: false })}
-      >
-        <Alert variant="outlined" onClose={() => this.setState({ snackBar: false })} severity="error">
-          Ya cargaste este producto en la venta, edítalo.
-        </Alert>
-      </Snackbar>
     );
   }
 
