@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from '../NavBar';
+import SideBar from '../SideBar';
 import '../../style/Header.css';
 
 class Header extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <SideBar />
         <div className="header-container">
           <h1 className="category ">{this.props.category}</h1>
           <div className="button1">

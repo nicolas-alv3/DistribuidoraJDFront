@@ -140,7 +140,13 @@
 .deleteIcon{
     color:red;
     position: absolute;
-    right:40px
+    right:30px
+}
+
+.editIcon{
+    color:rgb(59, 59, 212);
+    position: absolute;
+    right:70px
 }
 
 .list{
@@ -168,6 +174,8 @@
 
 .searchField{
     display:inline;
+    position: relative;
+    top:4px;
     width:80%
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router';
@@ -11,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" render={(props) => <Products {...props} />} />
         <Route exact path="/products" render={(props) => <Products {...props} />} />
         <Route exact path="/sales" render={(props) => <Sales {...props} />} />
         <Route exact path="/addSale" render={(props) => <AddSale {...props} />} />

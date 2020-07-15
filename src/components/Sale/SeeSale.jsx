@@ -1,7 +1,6 @@
 /* eslint-disable radix */
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import DeleteIcon from '@material-ui/icons/Delete';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import { Fab } from '@material-ui/core';
 import Header from '../Products/Header';
@@ -18,9 +17,9 @@ export default class SeeSale extends React.Component {
     return (
       <div className="clientBox">
         <h3> Datos del cliente </h3>
-        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.name} type="text" required label="Nombre" />
-        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.address} type="text" required label="Domicilio" />
-        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.dni} type="number" required label="D.N.I." />
+        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.name || 'Sin nombre'} type="text" required label="Nombre" />
+        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.address || 'Sin domicilio'} type="text" required label="Domicilio" />
+        <TextField className="clientInput" disabled value={this.props.location.state.sale.client.dni || 'Sin DNI'} type="number" required label="D.N.I." />
       </div>
     );
   }
@@ -29,14 +28,14 @@ export default class SeeSale extends React.Component {
     return (
       <div className="detailsBox">
         <h3> Detalles</h3>
-        <TextField multiline disabled value={this.props.location.state.sale.details} variant="outlined" label="¿Algun comentario o recordatorio?" className="detailsInput" />
+        <TextField multiline disabled value={this.props.location.state.sale.details || 'Sin comentarios'} variant="outlined" label="¿Algun comentario o recordatorio?" className="detailsInput" />
       </div>
     );
   }
 
   sendBackButton() {
     return (
-      <div className="container">
+      <div className="button-container">
         <Fab className="sendSaleButton" variant="extended" onClick={() => this.back()}>
           <BackIcon />
           ATRAS
@@ -48,14 +47,13 @@ export default class SeeSale extends React.Component {
   renderHeader() {
     return (
       <li className="list-group-item header" key={-1}>
-        <div className="row header">
-          <div className="col">Código</div>
-          <div className="col">Descripción</div>
-          <div className="col">Cantidad</div>
-          <div className="col">Bonificación</div>
-          <div className="col">Precio unitario</div>
-          <div className="col">Subtotal</div>
-          <div className="lcol" />
+        <div className="row">
+          <div className="add-sale-code-header">Código</div>
+          <div className="add-sale-description-header">Descripción</div>
+          <div className="add-sale-quantity-header">Cantidad</div>
+          <div className="add-sale-package-discount-header">Bonificación</div>
+          <div className="add-sale-unit-price-header">P. unitario</div>
+          <div className="add-sale-total-price-header">Subtotal</div>
         </div>
       </li>
     );
@@ -68,12 +66,12 @@ export default class SeeSale extends React.Component {
       (item) => (
         <li key={item.getCode()} className="list-group-item">
           <div className="row">
-            <div className="col">{item.getCode()}</div>
-            <div className="col">{item.getDescription()}</div>
-            <div className="col">{item.getTotalAmount()} u.</div>
-            <div className="col">{item.getPackageDiscount()}%</div>
-            <div className="col">{parsePesos(item.getUnitPrice())}</div>
-            <div className="col">{parsePesos(item.getTotalPrice().toString())}<DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} /></div>
+            <div className="add-sale-code-header">{item.getCode()}</div>
+            <div className="add-sale-description-header">{item.getDescription()}</div>
+            <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
+            <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
+            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice().toString())}</div>
+            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}</div>
           </div>
         </li>
       ),
@@ -92,7 +90,6 @@ export default class SeeSale extends React.Component {
     return (
       <div>
         <Header category="Ver venta" />
-        <hr />
         {this.clientBox()}{this.detailsBox()}
         <ul className="list-group list">
           {this.renderHeader()}

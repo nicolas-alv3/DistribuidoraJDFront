@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable radix */
 import React from 'react';
 import Swal from 'sweetalert2';
@@ -7,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import SendIcon from '@material-ui/icons/Send';
 import SearchIcon from '@material-ui/icons/Search';
 import { Fab } from '@material-ui/core';
@@ -81,8 +83,8 @@ export default class AddSale extends React.Component {
         details: this.state.details,
       };
       API.post('/sale', body)
-        .then((res) => this.done(res))
-        .catch((e) => console.log(e));
+        .then((res) => this.done(res));
+      // .catch((e) => console.log(e));
     }
   }
 
@@ -111,9 +113,19 @@ export default class AddSale extends React.Component {
   }
 
   delete(item) {
-    // eslint-disable-next-line react/no-access-state-in-setstate
     const newItems = this.state.items.filter((i) => i !== item);
     this.setState({ items: newItems });
+  }
+
+  edit(item) {
+    const newItems = this.state.items.filter((i) => i !== item);
+    this.setState({
+      items: newItems,
+      code: item.getCode(),
+      description: item.getDescription(),
+      unitAmount: item.getTotalAmount(),
+      currentItem:item,
+    });
   }
 
   defaultItem() {
@@ -264,7 +276,7 @@ export default class AddSale extends React.Component {
           value={this.state.description}
           type="text"
           style={{
-            width: '70%', display: 'inline-block',position:'relative',top:'-25px'
+            width: '70%', display: 'inline-block', position: 'relative', top: '-25px',
           }}
           getOptionLabel={(option) => option}
           label="Descripción"
@@ -319,8 +331,11 @@ export default class AddSale extends React.Component {
             <div className="add-sale-description-header">{item.getDescription()}</div>
             <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
             <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
-            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice())}</div>
-            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}<DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} /></div>
+            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice().toString())}</div>
+            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}
+              <DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} />
+              <EditIcon className="editIcon" onClick={() => this.edit(item)} />
+            </div>
           </div>
         </li>
       ),
@@ -334,9 +349,9 @@ export default class AddSale extends React.Component {
           <div className="add-sale-code">{this.searchCodeInput()}</div>
           <div className="add-sale-description">{this.searchDescriptionInput()}</div>
           <div className="add-sale-quantity">
-            <TextField error={quantityError} className="cantField" value={this.state.packageAmount} type="text" label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
+            <TextField error={quantityError} type="number" className="cantField" value={this.state.packageAmount} label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
             <Divider className="vertical-divider" orientation="vertical" />
-            <TextField error={quantityError} className="cantField" value={this.state.unitAmount} type="text" label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
+            <TextField error={quantityError} type="number" className="cantField" value={this.state.unitAmount} label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
             <TextField disabled error={quantityError} className="cantField" value={`${this.state.currentItem.getStock() || 0} u.`} type="text" label="Stock" />
           </div>
           <div className="add-sale-package-discount">{this.state.currentItem.getPackageDiscount()}%</div>
