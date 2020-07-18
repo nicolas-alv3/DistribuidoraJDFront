@@ -2,6 +2,10 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CheckIcon from '@material-ui/icons/Check';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 import EditIcon from '@material-ui/icons/Edit';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Swal from 'sweetalert2';
@@ -24,6 +28,7 @@ export default class EditModal extends React.Component {
       amountForDiscount: this.props.product.amountForDiscount,
       amountPerPackage: this.props.product.amountPerPackage,
       stock: this.props.product.stock,
+      category : this.props.product.category,
     };
   }
 
@@ -65,6 +70,10 @@ export default class EditModal extends React.Component {
     this.setState({ amountForDiscount: e.target.value });
   }
 
+  handleCategory(e) {
+    this.setState({ category: e.target.value });
+  }
+
   productUpdated() {
     Swal.fire(
       'Bien!',
@@ -92,6 +101,7 @@ export default class EditModal extends React.Component {
       amountPerPackage: this.state.amountPerPackage,
       amountForDiscount: this.state.amountForDiscount,
       stock: this.state.stock,
+      category: this.state.category,
     };
     API.put('/product', body)
       .then(() => this.productUpdated())
@@ -99,7 +109,26 @@ export default class EditModal extends React.Component {
   }
 
   inputName() {
-    return <TextField value={this.state.name} className="name" required label="Nombre" onChange={(e) => this.handleName(e)} />;
+    return <TextField value={this.state.name} className="textField " required label="Nombre" onChange={(e) => this.handleName(e)} />;
+  }
+
+  inputCategory() {
+    return (
+      <FormControl className="add-selector">
+        <InputLabel>Categoría</InputLabel>
+        <Select
+          value={this.state.category}
+          onChange={(e) => this.handleCategory(e)}
+        >
+          <MenuItem value="GALLETITAS">Galletitas</MenuItem>
+          <MenuItem value="CIGARRILLOS">Cigarrillos</MenuItem>
+          <MenuItem value="ANALGESICOS">Analgesicos</MenuItem>
+          <MenuItem value="VARIOS">Varios</MenuItem>
+          <MenuItem value="GASEOSAS">Gaseosas</MenuItem>
+          <MenuItem value="GOLOSINAS">Golosinas</MenuItem>
+        </Select>
+      </FormControl>
+    );
   }
 
   inputCode() {
@@ -208,7 +237,7 @@ export default class EditModal extends React.Component {
             disabled={!isValid}
             color="primary"
             aria-label="add"
-            onClick={() => this.post()}
+            onClick={() => this.put()}
           >
             <CheckIcon />
           </Fab>
@@ -233,6 +262,7 @@ export default class EditModal extends React.Component {
         <form className="form" noValidate autoComplete="off">
           <div className="Row">
             {this.inputName()}
+            {this.inputCategory()}
           </div>
           <div className="Row">
             {this.inputCode()}
@@ -260,7 +290,8 @@ export default class EditModal extends React.Component {
     && this.state.packageDiscount >= 0
     && this.state.amountForDiscount > 0
     && this.state.stock >= 0
-    && this.state.amountPerPackage > 0;
+    && this.state.amountPerPackage > 0
+    && this.state.category !== '';
     return (
       <div>
         <div className="add">

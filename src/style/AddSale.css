@@ -33,7 +33,13 @@
 }
 
 .add-sale-description {
-    width:25%
+    width:25%;
+}
+
+.add-sale-description-item {
+    width:25%;
+    font-size: 13pt;
+    padding-left:40px
 }
 
 .add-sale-quantity {
@@ -101,7 +107,8 @@
 }
 
 .footer{
-    background-color: #e8eaf6
+    background-color: #e8eaf6;
+    height: 60px;
 }
 
 .field {
@@ -129,6 +136,14 @@
 
 .totalPrice{
     font-size: 2em;
+    line-height: 30px;
+    text-align: center;
+    float: right;
+}
+.cigarAmount {
+    font-size: 1.5em;
+    text-align: center;
+    float: left;
 }
 
 .sendIcon{
@@ -183,4 +198,17 @@
     display:inline-block;
     margin:2% !important;
     width:29%
+}
+
+.sale-category-icon {
+    width: 25px;
+    position: relative;
+    left:-20px;
+    top: -3px
+}
+
+.sale-tooltip {
+    position: absolute;
+    top : 10px;
+    right : 10px
 }

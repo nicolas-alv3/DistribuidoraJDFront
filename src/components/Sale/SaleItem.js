@@ -61,4 +61,15 @@ export default class SaleItem {
   isError() {
     return this.getTotalAmount() > this.product.stock;
   }
+
+  cigarAmount() {
+    if (this.product.category === 'CIGARRILLOS') {
+      return this.getTotalAmount();
+    }
+    return 0;
+  }
+
+  getCategory() {
+    return this.product.category;
+  }
 }

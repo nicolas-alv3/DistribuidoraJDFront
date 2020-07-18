@@ -7,6 +7,12 @@ import EditModal from './EditModal';
 import ShowModal from './ShowModal';
 import '../../style/ProductList.css';
 import API from '../../service/api';
+import SodaIcon from '../../icons/soda.png';
+import DrugsIcon from '../../icons/drugs.png';
+import CigarIcon from '../../icons/cigar.png';
+import CookieIcon from '../../icons/cookie.png';
+import CandyIcon from '../../icons/candy.png';
+import OtherIcon from '../../icons/question.png';
 import { parsePesos } from '../../utils/utils';
 import Pages from '../Pages';
 
@@ -24,6 +30,19 @@ export default class ProductList extends React.Component {
     API.get(`/product/all/${this.state.page}`)
       .then((res) => this.setState({ products: res.content, totalPages: res.totalPages }))
       .catch((e) => console.log(e));
+  }
+
+  getIcon(product) {
+    let res = '';
+    switch (product.category) {
+      case 'GASEOSAS': res = SodaIcon; break;
+      case 'ANALGESICOS': res = DrugsIcon; break;
+      case 'CIGARRILLOS': res = CigarIcon; break;
+      case 'GALLETITAS': res = CookieIcon; break;
+      case 'GOLOSINAS': res = CandyIcon; break;
+      default: res = OtherIcon; break;
+    }
+    return res;
   }
 
   handleChangePage(value) {
@@ -98,7 +117,10 @@ export default class ProductList extends React.Component {
         <li key={product.code} className={`list-group-item ${this.cssClass(product)}`}>
           <div className="row">
             <div className="col">{product.code}</div>
-            <div className="col">{product.name}</div>
+            <div className="col">
+              <img className="list-category-icon" src={this.getIcon(product)} alt="categoria" />
+              {product.name}
+            </div>
             <div className="col">{parsePesos(product.unitPrice.toString())}</div>
             <div className="col">{product.packageDiscount}%</div>
             <div className="col">{product.stock}u.</div>

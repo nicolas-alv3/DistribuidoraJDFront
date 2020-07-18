@@ -18,6 +18,13 @@
     color:gray
 }
 
+.list-category-icon {
+    width: 25px;
+    position: absolute;
+    left:-20px;
+    top: -3px
+}
+
 .container {
     height: 200px;
 }

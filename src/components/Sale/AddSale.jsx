@@ -15,6 +15,13 @@ import { Fab } from '@material-ui/core';
 import ListIcon from '@material-ui/icons/PlaylistAddCheck';
 import Header from '../Products/Header';
 import '../../style/AddSale.css';
+import SodaIcon from '../../icons/soda.png';
+import DrugsIcon from '../../icons/drugs.png';
+import CigarIcon from '../../icons/cigar.png';
+import CookieIcon from '../../icons/cookie.png';
+import CandyIcon from '../../icons/candy.png';
+import OtherIcon from '../../icons/question.png';
+import InfoTooltip from '../InfoTooltip';
 import { parsePesos } from '../../utils/utils.js';
 import API from '../../service/api';
 import SaleItem from './SaleItem';
@@ -60,6 +67,19 @@ export default class AddSale extends React.Component {
     return this.setState({ allNames: names });
   }
 
+  getIcon(category) {
+    let res = '';
+    switch (category) {
+      case 'GASEOSAS': res = SodaIcon; break;
+      case 'ANALGESICOS': res = DrugsIcon; break;
+      case 'CIGARRILLOS': res = CigarIcon; break;
+      case 'GALLETITAS': res = CookieIcon; break;
+      case 'GOLOSINAS': res = CandyIcon; break;
+      default: res = OtherIcon; break;
+    }
+    return res;
+  }
+
   getQuantity() {
     return this.state.packageAmount
      * this.state.currentItem.getAmountPerPackage()
@@ -99,7 +119,7 @@ export default class AddSale extends React.Component {
   }
 
   handleKeyPress(event) {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && event.ctrlKey) {
       this.handleEnter();
     }
   }
@@ -110,6 +130,10 @@ export default class AddSale extends React.Component {
 
   totalPrice() {
     return this.state.items.reduce((ac, item) => ac + item.getTotalPrice(), 0);
+  }
+
+  cigarAmount() {
+    return this.state.items.reduce((ac, item) => ac + item.cigarAmount(), 0);
   }
 
   delete(item) {
@@ -147,7 +171,9 @@ export default class AddSale extends React.Component {
   }
 
   checkErrors() {
-    if (!this.existCodeInItems() && !this.state.currentItem.isError()) {
+    if (!this.existCodeInItems()
+    && !this.state.currentItem.isError()
+    && (this.state.unitAmount || this.state.packageAmount)) {
       this.state.items.push(this.state.currentItem);
     } else {
       this.showCorrectMessage();
@@ -220,7 +246,7 @@ export default class AddSale extends React.Component {
 
   handleUnitAmount(e) {
     this.setState({ unitAmount: e.target.value });
-    this.state.currentItem.setByUnit(parseInt(e.target.value) || 1);
+    this.state.currentItem.setByUnit(parseInt(e.target.value) || 0);
   }
 
   handleDetailsChange(e) {
@@ -316,7 +342,12 @@ export default class AddSale extends React.Component {
           <div className="add-sale-quantity-header">Cantidad</div>
           <div className="add-sale-package-discount-header">Bonificación</div>
           <div className="add-sale-unit-price-header">P. unitario</div>
-          <div className="add-sale-total-price-header">Subtotal</div>
+          <div className="add-sale-total-price-header">
+            Subtotal
+            <div className="sale-tooltip">
+              <InfoTooltip text="Es recomendable utilizar las teclas TAB y SHIFT+TAB para navegar en los formularios. Y CRTL + ENTER para agregar el producto" />
+            </div>
+          </div>
         </div>
       </li>
     );
@@ -328,7 +359,10 @@ export default class AddSale extends React.Component {
         <li key={item.getCode()} className="list-group-item">
           <div className="row">
             <div className="add-sale-code-header">{item.getCode()}</div>
-            <div className="add-sale-description-header">{item.getDescription()}</div>
+            <div className="add-sale-description-item">
+              <img className="sale-category-icon" src={this.getIcon(item.getCategory())} alt="categoria" />
+              {item.getDescription()}
+            </div>
             <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
             <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
             <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice().toString())}</div>
@@ -367,7 +401,8 @@ export default class AddSale extends React.Component {
   renderFooter() {
     return (
       <li className="list-group-item footer" key={0}>
-        <div className="totalPrice">Total: ${this.totalPrice()}</div>
+        <p className="totalPrice">Total: {parsePesos(this.totalPrice().toString())}</p>
+        <p className="cigarAmount">Atados: {this.cigarAmount()}</p>
       </li>
     );
   }
