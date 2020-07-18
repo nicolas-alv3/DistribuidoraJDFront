@@ -27,6 +27,19 @@
     margin-left: 25%
 }
 
+.show-add-check {
+    margin-top:20px !important;
+    margin-left:45% !important;
+}
+
+.show-add-button-container {
+    display: block;
+}
+
+.show-text {
+    font-size: 13pt;
+}
+
 .add-cancel {
     display: inline-block;
     margin-left: 30%

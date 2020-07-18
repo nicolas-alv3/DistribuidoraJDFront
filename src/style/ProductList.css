@@ -35,7 +35,23 @@
     left:40%
 }
 
-.buttonsCol{
-    padding: 0;
-    margin:0;
+.item-button-delete{
+    position: absolute;
+    right: 10%;
+    top:-7px
+}
+.item-button-edit{
+    position: absolute;
+    right: 55%;
+    top:-7px
+}
+
+.item-button-show{
+    position: absolute;
+    right:100%;
+    top:-7px
+}
+
+.buttons-container{
+    display: block
 }

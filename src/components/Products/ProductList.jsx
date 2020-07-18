@@ -1,9 +1,10 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EmptyIcon from '@material-ui/icons/NoteAddOutlined'; 
+import EmptyIcon from '@material-ui/icons/NoteAddOutlined';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
 import EditModal from './EditModal';
+import ShowModal from './ShowModal';
 import '../../style/ProductList.css';
 import API from '../../service/api';
 import { parsePesos } from '../../utils/utils';
@@ -27,7 +28,11 @@ export default class ProductList extends React.Component {
 
   handleChangePage(value) {
     API.get(`/product/all/${value - 1}`)
-      .then((res) => this.setState({ products: res.content, totalPages: res.totalPages, page: res.pageable.pageNumber }))
+      .then((res) => this.setState({
+        products: res.content,
+        totalPages: res.totalPages,
+        page: res.pageable.pageNumber,
+      }))
       .catch((e) => console.log(e));
   }
 
@@ -61,11 +66,14 @@ export default class ProductList extends React.Component {
 
   buttons(product) {
     return (
-      <div className="row">
-        <div className="buttonsCol col">
+      <div className="buttons-container">
+        <div className="item-button-show">
+          <ShowModal product={product} />
+        </div>
+        <div className="item-button-edit">
           <EditModal product={product} />
         </div>
-        <div className="buttonsCol col">
+        <div className="item-button-delete">
           <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(product)}>
             <DeleteIcon style={{ color: 'red' }} />
           </Button>

@@ -124,7 +124,7 @@ export default class AddSale extends React.Component {
       code: item.getCode(),
       description: item.getDescription(),
       unitAmount: item.getTotalAmount(),
-      currentItem:item,
+      currentItem: item,
     });
   }
 
