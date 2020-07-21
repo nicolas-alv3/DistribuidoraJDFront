@@ -64,38 +64,6 @@
     margin-top:25px
 }
 
-.clientBox{
-    border:1px solid whitesmoke ;
-    padding:2%;
-    border-radius: 10px;
-    display: inline-block;
-    width: 60%;
-    margin: 0 2.5%;
-    position: relative;
-    bottom: 60px;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    background: #FFFDFD
-
-}
-
-.detailsBox{
-    box-shadow: 2px 2px 2px lightgray;
-    border:1px solid whitesmoke ;
-    padding:2%;
-    border-radius: 10px;
-    display: inline-block;
-    width: 33%;
-    height: 150px;
-    overflow: auto;
-    margin: 0;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
-    background: #FFFDFD
-}
-
 .header{
     font-size: 15pt;
     height: 70px;
@@ -127,6 +95,7 @@
 
 .clientInput{
     margin:auto 10px !important;
+    width: 25%;
 }
 
 .detailsInput{
@@ -211,4 +180,40 @@
     position: absolute;
     top : 10px;
     right : 10px
+}
+
+.add-sale-cient-container {
+    display: block;
+    height: 150px;
+}
+
+.clientBox{
+    border:1px solid whitesmoke ;
+    padding:2%;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 2.5%;
+    width: 55%;
+    height: inherit;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    background: #7384e70e
+}
+
+.detailsBox{
+    box-shadow: 2px 2px 2px lightgray;
+    border:1px solid whitesmoke ;
+    padding:2%;
+    border-radius: 10px;
+    display: inline-block;
+    width: 30%;
+    height: inherit;
+    overflow: auto;
+    margin: 0;
+    position: absolute;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
+    background:#7384e70e
 }

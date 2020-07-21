@@ -50,6 +50,10 @@ export default class AddSale extends React.Component {
     };
     this.handleEnter.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+
+    // TODO : Hacer que se vea el producto vendido en la vista de venta
+    // Arreglar cuadro de cliente
+    //Redireccionar a ventas una vez vendido.
   }
 
   componentDidMount() {
@@ -413,7 +417,9 @@ export default class AddSale extends React.Component {
     return (
       <div>
         <Header category="Nueva venta" />
-        {this.clientBox()}{this.detailsBox()}
+        <div className="add-sale-cient-container">
+          {this.clientBox()}{this.detailsBox()}
+        </div>
         <ul className="list-group list">
           {this.renderHeader()}
           {this.renderGetProduct(quantityError)}

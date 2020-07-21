@@ -15,9 +15,15 @@ export default function Pages(props) {
   const handleChange = (event, value) => {
     props.onChange(value);
   };
+  const pagination = () => {
+    if (props.visible) {
+      return <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />
+    }
+    return <div />;
+  };
   return (
     <div className={`pagination ${classes.root}`}>
-      <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />
+      {pagination}
     </div>
   );
 }

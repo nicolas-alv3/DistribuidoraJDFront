@@ -5,13 +5,6 @@ import Header from '../Products/Header';
 import SalesList from './SalesList.jsx';
 
 export default class Sales extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sales: [],
-    };
-  }
-
   addSaleButton() {
     return (
       <Fab color="primary" aria-label="add" onClick={() => this.props.history.push('/addSale')}>

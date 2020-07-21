@@ -18,12 +18,13 @@ class SalesList extends React.Component {
       sales: [],
       page: 0,
       totalPages: 0,
+      arePagesVisible: false,
     };
   }
 
   componentDidMount() {
     API.get(`/sale/all/${this.state.page}`)
-      .then((res) => this.setState({ sales: res.content }))
+      .then((res) => this.setState({ sales: res.content, arePagesVisible: res.totalPages === '1' }))
       .catch((e) => console.log(e));
   }
 
@@ -128,7 +129,7 @@ class SalesList extends React.Component {
         <h3 className="emptyList">
           No tienes ventas registradas, ¿Empezamos?
         </h3>
-        <div className="container">
+        <div className="empty-container">
           <EmptyIcon className="emptyIcon" onClick={() => this.props.history.push('addSale')} />
         </div>
       </div>
@@ -141,7 +142,7 @@ class SalesList extends React.Component {
         <ul className="list list-group">
           {this.renderList()}
         </ul>
-        <Pages page={this.state.page + 1} onChange={(value) => this.handleChangePage(value)} count={this.state.totalPages} color="primary" />
+        <Pages page={this.state.page + 1} onChange={(value) => this.handleChangePage(value)} count={this.state.totalPages} color="primary" visible={this.state.arePagesVisible} />
       </div>
     );
   }

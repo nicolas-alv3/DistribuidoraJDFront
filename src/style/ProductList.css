@@ -25,21 +25,16 @@
     top: -3px
 }
 
-.container {
-    height: 200px;
-}
-
 .empty-container {
     display: block;
-    width: 100%
+    width: 25% !important;
+    margin:auto !important
 }
 
 .emptyIcon {
     font-size: 150pt !important;
     margin:auto !important;
     color:gray;
-    position: relative;
-    left:40%
 }
 
 .item-button-delete{
