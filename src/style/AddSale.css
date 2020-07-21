@@ -20,7 +20,7 @@
 
 .add-sale-unit-price-header {
     width:12%;
-    text-align: center;
+    text-align: right;
 }
 
 .add-sale-total-price-header {
@@ -185,6 +185,7 @@
 .add-sale-cient-container {
     display: block;
     height: 150px;
+    margin: 2% 0
 }
 
 .clientBox{
