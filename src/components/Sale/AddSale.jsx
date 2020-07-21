@@ -13,7 +13,7 @@ import SendIcon from '@material-ui/icons/Send';
 import SearchIcon from '@material-ui/icons/Search';
 import { Fab } from '@material-ui/core';
 import ListIcon from '@material-ui/icons/PlaylistAddCheck';
-import Header from '../Products/Header';
+import Header from '../Header';
 import '../../style/AddSale.css';
 import SodaIcon from '../../icons/soda.png';
 import DrugsIcon from '../../icons/drugs.png';

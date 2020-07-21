@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../Header';
 import AddStockModal from '../Stock/AddStockModal';
 import AddModal from './AddModal';
 import ProductList from './ProductList';

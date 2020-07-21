@@ -2,6 +2,7 @@
   "name": "distribuidora-jd-front",
   "version": "0.1.0",
   "private": true,
+  "proxy" : "localhost:500",
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",

@@ -1,7 +1,7 @@
 import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddSaleIcon from '@material-ui/icons/AddShoppingCart';
-import Header from '../Products/Header';
+import Header from '../Header';
 import SalesList from './SalesList.jsx';
 
 export default class Sales extends React.Component {

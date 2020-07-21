@@ -1,31 +1,37 @@
 .add-sale-code-header {
     width:13%;
     text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-description-header {
     width:25%;
     text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-quantity-header {
     width:20%;
     text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-package-discount-header {
     width:10%;
     text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-unit-price-header {
     width:12%;
-    text-align: right;
+    text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-total-price-header {
     width:10%;
     text-align: center;
+    margin-top: 7px;
 }
 
 .add-sale-code {

@@ -7,6 +7,7 @@ import Products from './components/Products/Products';
 import Sales from './components/Sale/Sales';
 import AddSale from './components/Sale/AddSale';
 import SeeSale from './components/Sale/SeeSale';
+import SearchResult from './components/SearchResult';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/sales" render={(props) => <Sales {...props} />} />
         <Route exact path="/addSale" render={(props) => <AddSale {...props} />} />
         <Route exact path="/seeSale" render={(props) => <SeeSale {...props} />} />
+        <Route exact path="/search" render={(props) => <SearchResult {...props} />} />
       </Switch>
     </BrowserRouter>
   );

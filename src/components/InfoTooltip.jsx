@@ -8,7 +8,7 @@ export default function TransitionsTooltips(props) {
   return (
     <div>
       <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title={props.text}>
-        <Button><InfoIcon style={{'font-size':"30pt"}} /></Button>
+        <Button><InfoIcon style={{ 'font-size': '30pt' }} /></Button>
       </Tooltip>
     </div>
   );

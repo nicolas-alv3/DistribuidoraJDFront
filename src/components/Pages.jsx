@@ -17,7 +17,7 @@ export default function Pages(props) {
   };
   const pagination = () => {
     if (props.visible) {
-      return <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />
+      return <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />;
     }
     return <div />;
   };

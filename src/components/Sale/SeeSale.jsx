@@ -3,7 +3,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import { Fab } from '@material-ui/core';
-import Header from '../Products/Header';
+import Header from '../Header';
 import '../../style/AddSale.css';
 import { parsePesos } from '../../utils/utils.js';
 import SaleItem from './SaleItem';

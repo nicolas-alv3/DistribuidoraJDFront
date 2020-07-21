@@ -243,7 +243,7 @@ export default class AddModal extends React.Component {
         <div className="add-check">
           <Fab
             className="add-check"
-            disabled={!isValid}
+            disabled={isValid}
             color="primary"
             aria-label="add"
             onClick={() => this.post()}
