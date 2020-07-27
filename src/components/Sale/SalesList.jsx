@@ -5,37 +5,12 @@ import SeeIcon from '@material-ui/icons/Visibility';
 import EmptyIcon from '@material-ui/icons/NoteAddOutlined';
 import Button from '@material-ui/core/Button';
 import Swal from 'sweetalert2';
-import Pages from '../Pages';
 import '../../style/ProductList.css';
 import '../../style/Pagination.css';
 import API from '../../service/api';
 import { parsePesos } from '../../utils/utils';
 
 class SalesList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sales: [],
-      page: 0,
-      totalPages: 0,
-      arePagesVisible: false,
-    };
-  }
-
-  componentDidMount() {
-    API.get(`/sale/all/${this.state.page}`)
-      .then((res) => this.setState({ sales: res.content, arePagesVisible: res.totalPages === '1' }))
-      .catch((e) => console.log(e));
-  }
-
-  handleChangePage(value) {
-    API.get(`/sale/all/${value - 1}`)
-      .then((res) => this.setState(
-        { sales: res.content, totalPages: res.totalPages, page: res.pageable.pageNumber },
-      ))
-      .catch((e) => console.log(e));
-  }
-
   deleteSuccess() {
     Swal.fire(
       'Eliminado!',
@@ -89,7 +64,7 @@ class SalesList extends React.Component {
   }
 
   mapsales() {
-    return this.state.sales.map(
+    return this.props.sales.map(
       (sale) => (
         <li className="list-group-item">
           <div className="row">
@@ -121,13 +96,13 @@ class SalesList extends React.Component {
   }
 
   renderList() {
-    if (this.state.sales.length > 0) {
+    if (this.props.sales !== undefined && this.props.sales.length > 0) {
       return <div>{this.listHeader()}{this.mapsales()}</div>;
     }
     return (
       <div>
         <h3 className="emptyList">
-          No tienes ventas registradas, ¿Empezamos?
+          {this.props.message}
         </h3>
         <div className="empty-container">
           <EmptyIcon className="emptyIcon" onClick={() => this.props.history.push('addSale')} />
@@ -142,7 +117,6 @@ class SalesList extends React.Component {
         <ul className="list list-group">
           {this.renderList()}
         </ul>
-        <Pages page={this.state.page + 1} onChange={(value) => this.handleChangePage(value)} count={this.state.totalPages} color="primary" visible={this.state.arePagesVisible} />
       </div>
     );
   }

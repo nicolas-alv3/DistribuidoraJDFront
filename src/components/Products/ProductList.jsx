@@ -14,24 +14,8 @@ import CookieIcon from '../../icons/cookie.png';
 import CandyIcon from '../../icons/candy.png';
 import OtherIcon from '../../icons/question.png';
 import { parsePesos } from '../../utils/utils';
-import Pages from '../Pages';
 
 export default class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-      page: 0,
-      totalPages: 0,
-    };
-  }
-
-  componentDidMount() {
-    API.get(`/product/all/${this.state.page}`)
-      .then((res) => this.setState({ products: res.content, totalPages: res.totalPages }))
-      .catch((e) => console.log(e));
-  }
-
   getIcon(product) {
     let res = '';
     switch (product.category) {
@@ -43,16 +27,6 @@ export default class ProductList extends React.Component {
       default: res = OtherIcon; break;
     }
     return res;
-  }
-
-  handleChangePage(value) {
-    API.get(`/product/all/${value - 1}`)
-      .then((res) => this.setState({
-        products: res.content,
-        totalPages: res.totalPages,
-        page: res.pageable.pageNumber,
-      }))
-      .catch((e) => console.log(e));
   }
 
   deleteSuccess() {
@@ -112,7 +86,7 @@ export default class ProductList extends React.Component {
   }
 
   mapProducts() {
-    return this.state.products.map(
+    return this.props.products.map(
       (product) => (
         <li key={product.code} className={`list-group-item ${this.cssClass(product)}`}>
           <div className="row">
@@ -133,7 +107,7 @@ export default class ProductList extends React.Component {
 
   listHeader() {
     return (
-      <li className="list-group-item list-group-item-secondary">
+      <li key={-1} className="list-group-item list-group-item-secondary">
         <div className="row">
           <div className="col">Código</div>
           <div className="col">Nombre</div>
@@ -147,13 +121,13 @@ export default class ProductList extends React.Component {
   }
 
   renderList() {
-    if (this.state.products.length > 0) {
+    if (this.props.products.length > 0) {
       return <div>{this.listHeader()}{this.mapProducts()}</div>;
     }
     return (
       <div>
         <h3 className="emptyList">
-          No tienes productos registrados, ¿Empezamos?
+          {this.props.message}
         </h3>
         <div className="empty-container">
           <EmptyIcon className="emptyIcon" />
@@ -168,7 +142,6 @@ export default class ProductList extends React.Component {
         <ul className="list list-group">
           {this.renderList()}
         </ul>
-        <Pages page={this.state.page + 1} onChange={(value) => this.handleChangePage(value)} count={this.state.totalPages} color="primary" />
       </div>
     );
   }
