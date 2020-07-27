@@ -1,0 +1,64 @@
+2020-07-27T18:25:10.480Z - info: Initializing jsreport@2.9.0 in development mode using configuration file: jsreport.config.json
+2020-07-27T18:25:10.485Z - info: Searching for available extensions in /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/
+2020-07-27T18:25:10.510Z - info: Extensions location cache contains up to date information, skipping crawling in /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/
+2020-07-27T18:25:10.520Z - info: Found 35 extensions
+2020-07-27T18:25:11.189Z - info: Setting http-server strategy for rendering
+2020-07-27T18:25:11.860Z - info: Using extension handlebars@2.1.0
+2020-07-27T18:25:11.897Z - info: Using extension jsrender@2.1.1
+2020-07-27T18:25:11.919Z - info: Using extension templates@2.4.0
+2020-07-27T18:25:11.937Z - info: Using extension import-export@2.0.0
+2020-07-27T18:25:12.425Z - info: Using extension freeze@2.0.0
+2020-07-27T18:25:12.432Z - info: Using extension cli@2.2.4
+2020-07-27T18:25:12.435Z - info: Using extension express@2.7.0
+2020-07-27T18:25:13.751Z - info: Using extension debug@2.1.3
+2020-07-27T18:25:13.771Z - info: Using extension tags@2.4.0
+2020-07-27T18:25:13.800Z - info: Using extension docx@2.7.0
+2020-07-27T18:25:13.839Z - info: Using extension chrome-pdf@1.8.0
+2020-07-27T18:25:14.593Z - info: Using extension fs-store@2.8.0
+2020-07-27T18:25:16.038Z - info: Using extension authorization@2.4.0
+2020-07-27T18:25:16.081Z - info: Using extension child-templates@1.4.0
+2020-07-27T18:25:16.165Z - info: Using extension browser-client@2.2.2
+2020-07-27T18:25:16.183Z - info: Using extension licensing@2.2.2
+2020-07-27T18:25:16.198Z - info: Using extension data@2.3.0
+2020-07-27T18:25:16.201Z - info: Using extension pptx@0.7.0
+2020-07-27T18:25:16.224Z - info: Using extension version-control@1.5.0
+2020-07-27T18:25:17.117Z - info: Using extension reports@2.4.0
+2020-07-27T18:25:17.157Z - info: Using extension text@2.0.0
+2020-07-27T18:25:17.170Z - info: Using extension base@2.0.2
+2020-07-27T18:25:17.190Z - info: Using extension static-pdf@0.4.0
+2020-07-27T18:25:17.247Z - info: Using extension studio@2.9.0
+2020-07-27T18:25:17.669Z - info: Using extension pdf-utils@1.8.0
+2020-07-27T18:25:18.274Z - info: Using extension scripts@2.5.0
+2020-07-27T18:25:18.295Z - info: Using extension html-to-xlsx@2.7.0
+2020-07-27T18:25:21.200Z - info: html-to-xlsx detected chrome as available html engine
+2020-07-27T18:25:21.233Z - info: Using extension assets@1.6.0
+2020-07-27T18:25:21.342Z - info: Using extension studio-theme-dark@0.3.0
+2020-07-27T18:25:21.357Z - info: Using extension scheduling@2.4.0
+2020-07-27T18:25:21.602Z - info: Using extension xlsx@2.4.0
+2020-07-27T18:25:22.985Z - info: Using extension sample-template@2.5.1
+2020-07-27T18:25:23.002Z - info: Using extension resources@2.1.0
+2020-07-27T18:25:23.004Z - info: Using extension public-templates@2.1.0
+2020-07-27T18:25:23.007Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2020-07-27T18:25:23.008Z - info: Using fs provider for template store.
+2020-07-27T18:25:23.068Z - info: fs store is persisting using fs
+2020-07-27T18:25:23.074Z - info: fs store is synchronizing using fs
+2020-07-27T18:25:23.141Z - info: fs store is loading data
+2020-07-27T18:25:23.308Z - info: fs store is initialized successfully
+2020-07-27T18:25:23.429Z - info: Creating default express app.
+2020-07-27T18:25:23.656Z - info: jsreport server successfully started on http port: 5488
+2020-07-27T18:25:23.658Z - info: fs store emits sockets to synchronize underlying changes with studio
+2020-07-27T18:25:23.802Z - info: Verifying license key free
+2020-07-27T18:25:23.805Z - info: Using free license
+2020-07-27T18:25:24.788Z - info: reporter initialized
+2020-07-27T18:41:26.267Z - info: Starting rendering request 1 (user: null)
+2020-07-27T18:41:26.286Z - info: Rendering template { name: invoice-main, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-27T18:41:38.994Z - info: Rendering request 1 finished in 12730 ms
+2020-07-27T18:52:17.064Z - info: Starting rendering request 2 (user: null)
+2020-07-27T18:52:17.066Z - info: Rendering template { name: invoice-main, recipe: chrome-pdf, engine: handlebars, preview: true }
+2020-07-27T18:52:25.740Z - info: Starting rendering request 3 (user: null)
+2020-07-27T18:52:25.742Z - info: Rendering template { name: invoice-main, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-07-27T18:52:26.020Z - info: Rendering request 2 finished in 8957 ms
+2020-07-27T18:52:26.869Z - info: Rendering request 3 finished in 1128 ms
+2020-07-27T18:52:37.140Z - info: Starting rendering request 4 (user: null)
+2020-07-27T18:52:37.142Z - info: Rendering template { name: invoice-main, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-07-27T18:52:46.830Z - info: Rendering request 4 finished in 9690 ms

@@ -39,6 +39,7 @@ export default class Products extends React.Component {
         <Header category="Productos" button1={<AddStockModal />} button2={<AddModal />} />
         <ProductList products={this.state.products} message="Aún no tienes productos ¿Empezamos?" />
         <Pages visible page={this.state.page + 1} onChange={(value) => this.handleChangePage(value)} count={this.state.totalPages} color="primary" />
+        <button type="button" onClick={() => this.props.history.push('/report')}>Report</button>
       </div>
     );
   }
