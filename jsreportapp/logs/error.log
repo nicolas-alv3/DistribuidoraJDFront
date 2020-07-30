@@ -1,0 +1,200 @@
+2020-07-27T19:43:03.813Z - error: Rendering request 34 finished with error in 41 ms
+2020-07-27T19:43:03.814Z - error: Error when processing render request 34 Asset DistribuidoraJD.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/DistribuidoraJD.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/DistribuidoraJD.css' Error: Asset DistribuidoraJD.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/DistribuidoraJD.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/DistribuidoraJD.css'
+    at readAsset (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-assets/lib/assets.js:232:15)
+2020-07-27T19:43:03.815Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main
+2020-07-27T19:45:25.195Z - error: Rendering request 37 finished with error in 34 ms
+2020-07-27T19:45:25.196Z - error: Error when processing render request 37 Asset /DistribuidoraJD/DistribuidoraJD-style.css not found in the store and also not on the disk: Unable to find or read file /DistribuidoraJD/DistribuidoraJD-style.css. ENOENT: no such file or directory, open '/DistribuidoraJD/DistribuidoraJD-style.css' Error: Asset /DistribuidoraJD/DistribuidoraJD-style.css not found in the store and also not on the disk: Unable to find or read file /DistribuidoraJD/DistribuidoraJD-style.css. ENOENT: no such file or directory, open '/DistribuidoraJD/DistribuidoraJD-style.css'
+    at readAsset (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-assets/lib/assets.js:232:15)
+2020-07-27T19:45:25.197Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main
+2020-07-27T19:45:30.428Z - error: Rendering request 38 finished with error in 38 ms
+2020-07-27T19:45:30.428Z - error: Error when processing render request 38 Asset /DistribuidoraJD/DistribuidoraJD-style.css not found in the store and also not on the disk: Unable to find or read file /DistribuidoraJD/DistribuidoraJD-style.css. ENOENT: no such file or directory, open '/DistribuidoraJD/DistribuidoraJD-style.css' Error: Asset /DistribuidoraJD/DistribuidoraJD-style.css not found in the store and also not on the disk: Unable to find or read file /DistribuidoraJD/DistribuidoraJD-style.css. ENOENT: no such file or directory, open '/DistribuidoraJD/DistribuidoraJD-style.css'
+    at readAsset (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-assets/lib/assets.js:232:15)
+2020-07-27T19:45:30.429Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main
+2020-07-27T20:55:12.047Z - error: Rendering request 127 finished with error in 362 ms
+2020-07-27T20:55:12.048Z - error: Error when processing render request 127 Failed to launch chrome!
+Inconsistency detected by ld.so: dl-tls.c: 493: _dl_allocate_tls_init: Assertion `listp->slotinfo[cnt].gen <= GL(dl_tls_generation)' failed!
+
+
+TROUBLESHOOTING: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+ Error: Failed to launch chrome!
+Inconsistency detected by ld.so: dl-tls.c: 493: _dl_allocate_tls_init: Assertion `listp->slotinfo[cnt].gen <= GL(dl_tls_generation)' failed!
+
+
+TROUBLESHOOTING: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+
+    at onClose (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/puppeteer/lib/Launcher.js:348:14)
+    at ChildProcess.helper.addEventListener (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/puppeteer/lib/Launcher.js:338:60)
+    at ChildProcess.emit (events.js:203:15)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:248:12)
+2020-07-27T20:55:12.049Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main
+2020-07-28T17:29:24.682Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main, details: SyntaxError: Unexpected token ] in JSON at position 4358
+    at JSON.parse (<anonymous>)
+    at normalizeJSONData (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:47:17)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:30:23)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/render.js:114:19)
+    at Reporter.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/reporter.js:324:12)
+    at Object.reporter.express.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:42:14)
+    at app.post (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:75:22)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:281:22
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:17:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at reporter.express.app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-studio/lib/studio.js:85:7)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/reporter.express.js:188:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:188:7)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:224:17
+    at originCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:214:15)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:204:7)
+2020-07-28T20:23:36.142Z - error: Rendering request 80 finished with error in 72 ms
+2020-07-28T20:23:36.145Z - error: Error when processing render request 80 Asset Header-Footer.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css' Error: Asset Header-Footer.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css'
+    at readAsset (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-assets/lib/assets.js:232:15)
+2020-07-28T20:23:36.146Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-header
+2020-07-28T20:27:01.093Z - error: Rendering request 84 finished with error in 36 ms
+2020-07-28T20:27:01.095Z - error: Error when processing render request 84 Asset Header-Footer.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css' Error: Asset Header-Footer.css not found in the store and also not on the disk: Unable to find or read file /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css. ENOENT: no such file or directory, open '/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/Header-Footer.css'
+    at readAsset (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-assets/lib/assets.js:232:15)
+2020-07-30T18:10:46.796Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main, details: SyntaxError: Unexpected number in JSON at position 4438
+    at JSON.parse (<anonymous>)
+    at normalizeJSONData (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:47:17)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:30:23)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/render.js:114:19)
+    at Reporter.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/reporter.js:324:12)
+    at Object.reporter.express.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:42:14)
+    at app.post (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:75:22)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:281:22
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:17:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at reporter.express.app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-studio/lib/studio.js:85:7)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/reporter.express.js:188:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:188:7)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:224:17
+    at originCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:214:15)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:204:7)
+2020-07-30T18:10:58.525Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main, details: SyntaxError: Unexpected number in JSON at position 4438
+    at JSON.parse (<anonymous>)
+    at normalizeJSONData (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:47:17)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:30:23)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/render.js:114:19)
+    at Reporter.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/reporter.js:324:12)
+    at Object.reporter.express.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:42:14)
+    at app.post (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:75:22)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:281:22
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:17:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at reporter.express.app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-studio/lib/studio.js:85:7)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/reporter.express.js:188:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:188:7)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:224:17
+    at originCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:214:15)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:204:7)
+2020-07-30T18:11:06.367Z - error: Error during processing request at http://localhost:5488/api/report/DistribuidoraJD-main, details: SyntaxError: Unexpected token } in JSON at position 4450
+    at JSON.parse (<anonymous>)
+    at normalizeJSONData (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:47:17)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/request.js:30:23)
+    at module.exports (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/render/render.js:114:19)
+    at Reporter.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-core/lib/reporter.js:324:12)
+    at Object.reporter.express.render (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:42:14)
+    at app.post (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:75:22)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:281:22
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:354:14)
+    at param (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:365:14)
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:410:3)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/routes.js:17:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at reporter.express.app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-studio/lib/studio.js:85:7)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/jsreport-express/lib/reporter.express.js:188:5)
+    at Layer.handle [as handle_request] (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:317:13)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/express/lib/router/index.js:275:10)
+    at cors (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:188:7)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:224:17
+    at originCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:214:15)
+    at /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:219:13
+    at optionsCallback (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:199:9)
+    at corsMiddleware (/home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/node_modules/cors/lib/index.js:204:7)

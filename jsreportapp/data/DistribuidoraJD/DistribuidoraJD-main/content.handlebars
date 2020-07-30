@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <style>
+            {#asset /DistribuidoraJD/DistribuidoraJD-style.css @encoding=utf8}
+        </style>
+    </head>
+    <body>
+        {{#if @index}}
+            <div style="page-break-before: always;"></div>
+          {{/if}}
+        <h1 class="x">X</h1>
+        <hr class="x-bar"/>
+        <div class="info-container">
+            <p class="header-right">Presupuesto N° 001-{{billNumber}}</p>
+            <p class="header-right header-right-1" >{{date}}</p>
+            <p class="header-right">{{time}}</p>
+            <div class="header-left-container">
+                <h3 class="header-left" >Florencio Varela</h3>
+                <h3 class="header-left" >11 2350-6505</h3>
+                <h3 class="header-left" >CUIT N°:20-38685693-2</h3>
+                <h3 class="header-left" >I.V.A. Responsable inscripto</h3>
+            </div>
+            <img class="logo" src="{#asset /DistribuidoraJD/DistribuidoraJD-logo.png @encoding=dataURI}" />
+        </div>
+        <hr class="divider" />
+        <div class="client-container">
+            <h3 class="client-title">Cliente:</h2>
+            <div class="client-name">Nombre: {{client.name}}</div>
+            <div class="client-dni">DNI:{{client.dni}}</div>
+            <div class="client-address">Domicilio:{{client.address}}</div>
+            <div class="client-address">Detalles:{{client.details}}</div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr class="table-header">
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio unitario</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+              {{#each items}}
+                <tr class="item">
+                    <td>
+                        {{description}}
+                    </td>
+                     <td>
+                        {{amount}}
+                    </td>
+                    <td>
+                        {{unitPrice}}
+                    </td>
+                     <td>
+                        {{subTotal}}
+                    </td>
+                </tr>
+                {{/each}}
+                <tr class="total-row">
+                     <td class="cigar">
+                         Cantidad de atados
+                    </td>
+                     <td class="cigar">
+                         {{cigarQuantity}}
+                    </td>
+                    <td class="total-row">
+                        <b>Total:</b>
+                    </td>
+                     <td class="total-row">
+                        $ {{totalPrice}}
+                    </td>
+                </tr>
+        </div>
+        </table>
+    </body>
+    
+</html>

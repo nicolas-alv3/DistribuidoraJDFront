@@ -1,0 +1,37 @@
+{
+    "shortid": "SklM5ro2lP",
+    "name": "DistribuidoraJD-main",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true,
+        "marginTop": "2cm",
+        "marginRight": "1cm",
+        "marginBottom": "2cm",
+        "marginLeft": "1cm",
+        "displayHeaderFooter": false
+    },
+    "creationDate": {
+        "$$date": 1595876759631
+    },
+    "modificationDate": {
+        "$$date": 1596132626458
+    },
+    "_id": "dqdOddyRklIx2Oye",
+    "$entitySet": "templates",
+    "data": {
+        "shortid": "BJeTsLshgw"
+    },
+    "pdfOperations": [
+        {
+            "type": "merge",
+            "templateShortid": "ryxdSKZAev",
+            "mergeToFront": false,
+            "renderForEveryPage": false,
+            "mergeWholeDocument": true
+        },
+        {
+            "type": "merge"
+        }
+    ]
+}

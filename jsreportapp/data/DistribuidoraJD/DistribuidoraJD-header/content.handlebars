@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <style>
+            {#asset /DistribuidoraJD/DistribuidoraJD-header.css @encoding=utf8}
+        </style>
+    </head>
+    <body>
+        {{#each $pdf.pages}}
+          {{#if @index}}
+            <div style="page-break-before: always;"></div>
+          {{/if}}
+          <main class="main"> 
+            <header class="header">
+            </header>
+            <footer class="footer">
+                <span class="footer-page">Pagina {{getPageNumber @index}} de {{getTotalPages ../$pdf.pages}}</span>
+            </footer>
+          </main>
+        {{/each}}
+    </body>
+</html>

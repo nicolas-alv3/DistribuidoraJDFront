@@ -1,0 +1,17 @@
+{
+    "shortid": "ryxdSKZAev",
+    "name": "DistribuidoraJD-header",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": {
+        "$$date": 1595967811821
+    },
+    "modificationDate": {
+        "$$date": 1595976064773
+    },
+    "_id": "N2bl3Ow6RYKjtBaG",
+    "$entitySet": "templates"
+}

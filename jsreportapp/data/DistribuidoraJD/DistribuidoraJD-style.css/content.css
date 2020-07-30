@@ -1,0 +1,120 @@
+.header-tel {
+    margin: 0 60px;
+    text-align: right;
+}
+
+.info-container {
+    margin-top:20px
+}
+
+.header-right {
+    margin:0px 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+}
+
+.header-left-container {
+    margin-top:20px
+}
+
+.header-left {
+    margin: 0 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    position: relative
+}
+
+.logo {
+    width: 350px;
+    margin: 0px 40px;
+    position: absolute;
+    top:-100px;
+}
+
+.divider{
+    margin: 20px 5%;
+}
+
+.table {
+    margin: 5% 10%;
+    width: 80%;
+    border: 0.3px solid lightgray;
+    border-top-left-radius : .25rem;
+    border-top-right-radius: .25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.table-header {
+ background: azure 
+}
+
+.client-container {
+    padding: 1% 10%;
+    width: 90%;
+    font-family: "Verdana";
+    column-count: 2;
+}
+
+tr:nth-child(even) {
+    background-color: snow;
+}
+
+.client-title {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top:-10px;
+    column-span: all
+}
+
+.client-name {
+    font-size: 12pt;
+    display: block;
+}
+.client-dni {
+    font-size: 12pt;
+    margin-top: 10px;
+    display: block;
+}
+
+.client-address {
+    font-size: 12pt;
+    margin-top: 10px;
+    display: block;
+}
+
+.totalPrice {
+    font-size: 16pt;
+    font-family: "verdana"
+}
+
+.x {
+    position:absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    top:-25px;
+    right:50%;
+    z-index: 10;
+    background: white;
+    text-align: center;
+    width: 30px;
+    border: 1px solid gray
+}
+
+.x-bar {
+    display: block;
+    position:relative;
+    margin: 20px 5%;
+    width: 90%;
+    top:0;
+}
+
+.total-row {
+    background: cornsilk;
+    font: Arial, Helvetica, sans-serif;
+    font-size: 14pt
+}
+
+.cigar {
+    background: azure;
+}
