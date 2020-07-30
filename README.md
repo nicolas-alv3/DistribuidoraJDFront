@@ -1,10 +1,10 @@
 # DistribuidoraJDFront
 
 ## To run the complete app:
-`npm install`
-`npm start`
-`cd jsreport`
-`npm start`
+- `npm install`
+- `npm start`
+- `cd jsreport`
+- `npm start`
 
 ## Available Scripts
 ### `yarn start`
