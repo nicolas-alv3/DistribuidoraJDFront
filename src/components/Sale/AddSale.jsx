@@ -86,9 +86,15 @@ export default class AddSale extends React.Component {
       + this.state.unitAmount;
   }
 
-  done() {
+  done(res) {
     Swal.fire('¡Listo!', 'La venta se ha realizado con éxito', 'success');
-    this.props.history.push('/sales');
+    console.log(res);
+    this.props.history.push({
+      pathname: '/seeSale',
+      state: {
+        sale: res,
+      },
+    });
   }
 
   postSale(b) {
@@ -103,8 +109,8 @@ export default class AddSale extends React.Component {
         details: this.state.details,
       };
       API.post('/sale', body)
-        .then((res) => this.done(res));
-      // .catch((e) => console.log(e));
+        .then((res) => this.done(res))
+        .catch((e) => console.log(e));
     }
   }
 

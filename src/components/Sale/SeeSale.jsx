@@ -2,13 +2,29 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import BackIcon from '@material-ui/icons/ArrowBack';
+import PDFIcon from '@material-ui/icons/PictureAsPdf';
 import { Fab } from '@material-ui/core';
 import Header from '../Header';
 import '../../style/AddSale.css';
-import { parsePesos } from '../../utils/utils.js';
+import { parsePesos, formatDate } from '../../utils/utils.js';
+import report from '../../service/reporter.js';
 import SaleItem from './SaleItem';
 
 export default class SeeSale extends React.Component {
+  getCigarQuantity(item) {
+    console.log(item);
+    if (item.product.category === 'CIGARRILLOS') {
+      return item.amount;
+    }
+    return 0;
+  }
+
+  viewReport() {
+    const cigarQuantity = this.props.location.state.sale.items
+      .reduce((ac, i) => ac + this.getCigarQuantity(i), 0);
+    report(this.props.location.state.sale, cigarQuantity);
+  }
+
   back() {
     this.props.history.goBack();
   }
@@ -33,12 +49,16 @@ export default class SeeSale extends React.Component {
     );
   }
 
-  sendBackButton() {
+  buttons() {
     return (
       <div className="button-container">
         <Fab className="sendSaleButton" variant="extended" onClick={() => this.back()}>
           <BackIcon />
           ATRAS
+        </Fab>
+        <Fab className="sendPDFButton" variant="extended" onClick={() => this.viewReport()}>
+          <PDFIcon />
+          VER COMPROBANTE
         </Fab>
       </div>
     );
@@ -89,14 +109,14 @@ export default class SeeSale extends React.Component {
   render() {
     return (
       <div>
-        <Header category="Ver venta" />
+        <Header category="Ver venta" button2={<p className="seeSale-date">{formatDate(this.props.location.state.sale.date)}</p>} />
         {this.clientBox()}{this.detailsBox()}
         <ul className="list-group list">
           {this.renderHeader()}
           {this.renderItems()}
           {this.renderFooter()}
         </ul>
-        {this.sendBackButton()}
+        {this.buttons()}
       </div>
     );
   }

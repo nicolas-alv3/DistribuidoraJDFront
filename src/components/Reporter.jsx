@@ -8,6 +8,7 @@ class Report extends React.Component {
       template: {
         shortid: 'SklM5ro2lP',
       },
+      options: { reportName: `Venta ${new Date().getHours()}:${new Date().getMinutes()} ` },
       data: { },
     };
     jsreport.render('_blank', reportRequest);

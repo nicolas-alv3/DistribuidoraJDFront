@@ -14,4 +14,15 @@ function onlyNumbers(str) {
   return /^\d+$/.test(str);
 }
 
-export { onlyNumbers, unparsePesos, parsePesos };
+function formatDate(date) {
+  // Format from YYYY-MM-DD to DD-MM-YYYY
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date.substring(8, 10);
+
+  return `${day}/${month}/${year}`;
+}
+
+export {
+  onlyNumbers, unparsePesos, parsePesos, formatDate,
+};

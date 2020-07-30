@@ -145,7 +145,7 @@
 
 .button-container{
     position: relative;
-    width: 150px;
+    width: 350px;
     padding-bottom: 15%;
     margin:auto
 }
@@ -153,6 +153,12 @@
 .sendSaleButton{
     color: whitesmoke !important;
     background-color:teal!important;
+}
+
+.sendPDFButton{
+    color: whitesmoke !important;
+    background-color:firebrick!important;
+    margin-left: 20px !important;
 }
 
 .searchIcon{
@@ -223,4 +229,13 @@
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
     background:#7384e70e
+}
+
+.seeSale-date{
+    font-size: 35pt;
+    color:gray;
+    position: absolute;
+    top:85px;
+    right: 40px;
+    
 }

@@ -18,7 +18,7 @@ export default function Pages(props) {
 
   return (
     <div className={`pagination ${classes.root}`}>
-      <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />;
+      <Pagination className="pagination" page={props.page} onChange={handleChange} count={props.count} color="primary" />
     </div>
   );
 }
