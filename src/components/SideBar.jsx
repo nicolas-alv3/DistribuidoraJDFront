@@ -19,7 +19,8 @@ import SaleIcon from '@material-ui/icons/AddShoppingCart';
 import ProductsIcon from '@material-ui/icons/Dns';
 import BuysIcon from '@material-ui/icons/ShoppingBasket';
 import BalanceIcon from '@material-ui/icons/AttachMoney';
-import SearchInput from './SearchInput';
+import logoSrc from '../icons/logo.png';
+import SearchInput from './Search/SearchInput';
 
 const drawerWidth = 240;
 
@@ -124,9 +125,7 @@ function PersistentDrawerLeft(props) {
         }}
       >
         <div className={classes.drawerHeader}>
-          <Typography variant="h6" noWrap>
-            Distribuidora JD
-          </Typography>
+          <img alt="logo" src={logoSrc} style={{ position: 'absolute', left: 0 }} />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -137,7 +136,7 @@ function PersistentDrawerLeft(props) {
             <ListItemIcon><SaleIcon /></ListItemIcon>
             <ListItemText primary="Ventas" />
           </ListItem>
-          <ListItem button key={2}>
+          <ListItem button key={2} onClick={() => props.history.push('/purchases')}>
             <ListItemIcon><BuysIcon /></ListItemIcon>
             <ListItemText primary="Compras" />
           </ListItem>
@@ -148,7 +147,7 @@ function PersistentDrawerLeft(props) {
         </List>
         <Divider />
         <List>
-          <ListItem button key={4}>
+          <ListItem button key={4} onClick={() => props.history.push('/balance')}>
             <ListItemIcon><BalanceIcon /></ListItemIcon>
             <ListItemText primary="Balances" />
           </ListItem>

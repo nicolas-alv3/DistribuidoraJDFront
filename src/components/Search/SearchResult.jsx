@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React from 'react';
-import Header from './Header';
-import ProductList from './Products/ProductList';
-import SaleList from './Sale/SalesList';
-import API from '../service/api';
+import Header from '../Header';
+import ProductList from '../Products/ProductList';
+import SaleList from '../Sale/SalesList';
+import API from '../../service/api';
 
 export default class SearchResult extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class SearchResult extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.location.state.isProductsPath) {
+    if (this.props.location.state.previousPath === '/product') {
       API.get(`/search/product/${this.props.location.state.searchInput}`)
         .then((res) => this.setState({ resultList: res }))
         .catch((e) => console.log(e));
@@ -26,7 +26,7 @@ export default class SearchResult extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.location.state.isProductsPath) {
+    if (this.props.location.state.previousPath === '/product') {
       API.get(`/search/product/${this.props.location.state.searchInput}`)
         .then((res) => this.setState({ resultList: res }))
         .catch((e) => console.log(e));

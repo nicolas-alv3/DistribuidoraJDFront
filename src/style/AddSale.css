@@ -162,14 +162,12 @@
 }
 
 .searchIcon{
-    display: inline;
     width: 30%;
     height: auto;
     margin-top:20px
 }
 
 .searchField{
-    display:inline;
     position: relative;
     top:4px;
     width:80%

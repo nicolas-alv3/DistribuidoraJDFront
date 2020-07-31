@@ -59,23 +59,13 @@ function SearchInput(props) {
   const handleEnter = () => {
     if (document.activeElement.id === 'searchInputID') {
     // Chequea que el elemento activo sea el input para handlear el enter
-      if (props.history.location.pathname === '/search') {
-        props.history.push({
-          pathname: '/search',
-          state: {
-            searchInput: search,
-            isProductsPath: props.location.state.isProductsPath,
-          },
-        });
-      } else {
-        props.history.push({
-          pathname: '/search',
-          state: {
-            searchInput: search,
-            isProductsPath: props.history.location.pathname === '/products',
-          },
-        });
-      }
+      props.history.push({
+        pathname: '/search',
+        state: {
+          searchInput: search,
+          previousPath: props.location.pathname,
+        },
+      });
     }
   };
 
