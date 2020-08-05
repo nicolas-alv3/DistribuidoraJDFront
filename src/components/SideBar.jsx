@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SaleIcon from '@material-ui/icons/AddShoppingCart';
 import ProductsIcon from '@material-ui/icons/Dns';
+import HomeIcon from '@material-ui/icons/Home';
 import BuysIcon from '@material-ui/icons/ShoppingBasket';
 import BalanceIcon from '@material-ui/icons/AttachMoney';
 import logoSrc from '../icons/logo.png';
@@ -132,6 +133,10 @@ function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
+          <ListItem button key={0} onClick={() => props.history.push('/home')}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
           <ListItem button key={1} onClick={() => props.history.push('/sales')}>
             <ListItemIcon><SaleIcon /></ListItemIcon>
             <ListItemText primary="Ventas" />

@@ -20,7 +20,7 @@ class SalesList extends React.Component {
     window.location.reload();
   }
 
-  delete(product) {
+  delete(sale) {
     Swal.fire({
       title: '¿Estas seguro?',
       text: 'Es irreversible',
@@ -32,7 +32,7 @@ class SalesList extends React.Component {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.value) {
-        API.post(`/product/delete/${product.code}`)
+        API.post(`/sale/delete/${sale.code}`)
           .then(() => this.deleteSuccess())
           .catch((e) => console.log(e));
       }

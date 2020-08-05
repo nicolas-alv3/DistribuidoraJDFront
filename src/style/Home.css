@@ -1,0 +1,62 @@
+.home-background {
+    position :absolute;
+    width:100%;
+    height: 100%;
+    background-color: black;
+}
+
+.home-title {
+    position: absolute;
+    background:rgba(63, 81, 181, .3);
+    display: block;
+    width: 100%;
+    margin:15% 0;
+    padding:0 18%;
+    z-index: 20;
+    color: white;
+    opacity: unset !important;
+    font-size: 90pt;
+    font-family:'Verdana, sans-serif';
+}
+
+.home-layer {
+    position :absolute;
+    top:0;
+    right: 0;
+    object-fit: cover;
+    width:100%;
+    height: 100%;
+    opacity: .3;
+    z-index: 10;
+    background-image: url("../icons/homeBackground.jpg")
+}
+
+.home-product-button {
+    position: absolute !important;
+    font-size: 20pt !important;
+    top:65%;
+    left:50%;
+    background-color:snow !important;
+    z-index: 30;
+    width:210px
+}
+
+.home-product-button:hover {
+    background-color: #7181ca !important;
+    color: whitesmoke;
+}
+
+.home-sales-button:hover {
+    background-color: #7181ca !important;
+    color: whitesmoke;
+}
+
+.home-sales-button {
+    position: absolute !important;
+    font-size: 20pt !important;
+    top:65%;
+    right: 50%;
+    background-color: whitesmoke !important;
+    z-index: 30;
+    width:200px
+}

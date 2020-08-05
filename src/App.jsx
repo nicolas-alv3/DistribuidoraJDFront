@@ -10,6 +10,7 @@ import SeeSale from './components/Sale/SeeSale';
 import SearchResult from './components/Search/SearchResult';
 import Purchases from './components/Purchases/Purchases';
 import Balance from './components/Balance/Balance';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/search" render={(props) => <SearchResult {...props} />} />
         <Route exact path="/purchases" render={(props) => <Purchases {...props} />} />
         <Route exact path="/balance" render={(props) => <Balance {...props} />} />
+        <Route exact path="/home" render={(props) => <Home {...props} />} />
         <Route path="/" render={(props) => <Products {...props} />} />
       </Switch>
     </BrowserRouter>

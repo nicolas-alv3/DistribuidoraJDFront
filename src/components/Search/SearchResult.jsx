@@ -14,11 +14,13 @@ export default class SearchResult extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.location.state.previousPath === '/product') {
+    if (this.props.location.state.previousPath === '/products') {
+      console.log('product')
       API.get(`/search/product/${this.props.location.state.searchInput}`)
         .then((res) => this.setState({ resultList: res }))
         .catch((e) => console.log(e));
     } else {
+      console.log(this.props.location.state.previousPath)
       API.get(`/search/sale/${this.props.location.state.searchInput}`)
         .then((res) => this.setState({ resultList: res }))
         .catch((e) => console.log(e));
@@ -26,7 +28,7 @@ export default class SearchResult extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.location.state.previousPath === '/product') {
+    if (this.props.location.state.previousPath === '/products') {
       API.get(`/search/product/${this.props.location.state.searchInput}`)
         .then((res) => this.setState({ resultList: res }))
         .catch((e) => console.log(e));
@@ -37,8 +39,15 @@ export default class SearchResult extends React.Component {
     }
   }
 
+  whereToSearch() {
+    if (this.props.location.state.previousPath === '/products') {
+      return 'Productos';
+    }
+    return 'Ventas';
+  }
+
   renderResult() {
-    if (this.props.location.state.isProductsPath) {
+    if (this.props.location.state.previousPath === '/products') {
       return (
         <ProductList
           products={this.state.resultList}
@@ -57,7 +66,7 @@ export default class SearchResult extends React.Component {
   render() {
     return (
       <div>
-        <Header category={`Resultado de ${this.props.location.state.searchInput}`} />
+        <Header category={`Resultado de ${this.props.location.state.searchInput} en ${this.whereToSearch()}`} />
         {this.renderResult()}
       </div>
     );
