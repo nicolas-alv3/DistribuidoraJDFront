@@ -28,7 +28,7 @@ export default class EditModal extends React.Component {
       amountForDiscount: this.props.product.amountForDiscount,
       amountPerPackage: this.props.product.amountPerPackage,
       stock: this.props.product.stock,
-      category : this.props.product.category,
+      category: this.props.product.category,
     };
   }
 

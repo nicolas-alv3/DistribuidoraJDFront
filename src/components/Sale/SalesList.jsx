@@ -32,7 +32,7 @@ class SalesList extends React.Component {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.value) {
-        API.post(`/sale/delete/${sale.code}`)
+        API.post(`/sale/delete/${sale.id}`)
           .then(() => this.deleteSuccess())
           .catch((e) => console.log(e));
       }

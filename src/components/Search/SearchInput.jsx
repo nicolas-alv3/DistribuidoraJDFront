@@ -63,7 +63,7 @@ function SearchInput(props) {
         pathname: '/search',
         state: {
           searchInput: search,
-          previousPath: props.location.pathname,
+          previousPath: (props.location.pathname === '/search') ? props.location.state.previousPath : props.location.pathname,
         },
       });
     }

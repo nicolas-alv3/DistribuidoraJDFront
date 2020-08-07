@@ -23,6 +23,16 @@ export default class Sales extends React.Component {
       .catch((e) => console.log(e));
   }
 
+  handleChangePage(value) {
+    API.get(`/sale/all/${value - 1}`)
+      .then((res) => this.setState({
+        sales: res.content,
+        totalPages: res.totalPages,
+        page: res.pageable.pageNumber,
+      }))
+      .catch((e) => console.log(e));
+  }
+
   addSaleButton() {
     return (
       <Fab color="primary" aria-label="add" onClick={() => this.props.history.push('/addSale')}>

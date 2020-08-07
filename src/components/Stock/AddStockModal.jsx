@@ -21,6 +21,16 @@ class AddStockModal extends React.Component {
       addButton: true,
       product: { name: '', amountPerPackage: 1 },
     };
+    this.handleEnter.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
   getBody() {
@@ -28,6 +38,21 @@ class AddStockModal extends React.Component {
       return { quantity: this.state.quantity, op: 'add' };
     }
     return { quantity: this.state.quantity, op: 'substract' };
+  }
+
+  handleEnter() {
+    if (document.activeElement.id === 'stockCodeInput') {
+      console.log('Deberia llamar a la api :D');
+      API.get(`/product/${this.state.code}`)
+        .then((res) => this.setState({ product: res }))
+        .catch(() => this.setState({ product: { name: 'Producto inexistente' } }));
+    }
+  }
+
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.handleEnter();
+    }
   }
 
   showModal(b) {
@@ -45,12 +70,6 @@ class AddStockModal extends React.Component {
   }
 
   handleCodeChange(e) {
-    // TODO: Ordenar promises para el barcode
-    if (e.target.value.length === 13) {
-      API.get(`/product/${e.target.value}`)
-        .then((res) => this.setState({ product: res }))
-        .catch(() => this.setState({ product: { name: 'Producto inexistente' } }));
-    }
     this.setState({ code: e.target.value });
   }
 
@@ -128,15 +147,15 @@ class AddStockModal extends React.Component {
           <DialogTitle>Editar stock</DialogTitle>
           <form className="form" noValidate autoComplete="off">
             <div className="Row">
-              <TextField error={isCodeError} type="number" value={this.state.code} className="textField" required id="standard-name" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
-              <TextField value={this.state.product.name} disabled className="textField" required id="standard-name" label="Nombre" />
+              <TextField error={isCodeError} type="number" value={this.state.code} className="textField" required id="stockCodeInput" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
+              <TextField value={this.state.product.name} disabled className="textField" label="Nombre" />
             </div>
             <div className="Row">
               <ButtonGroup className="buttonGroup" variant="contained">
                 <Button color={btnVariant} onClick={() => this.plusBtn()}>Agregar</Button>
                 <Button color={btnVariantm} onClick={() => this.minusBtn()}>Restar</Button>
               </ButtonGroup>
-              <TextField value={this.state.quantity} type="number" className="textField" required id="standard-name" label="Cantidad en unidades" helperText={this.packages()} onChange={(e) => this.handleQuantity(e)} />
+              <TextField value={this.state.quantity} type="number" className="textField" required label="Cantidad en unidades" helperText={this.packages()} onChange={(e) => this.handleQuantity(e)} />
             </div>
             {this.buttons(isValid)}
           </form>

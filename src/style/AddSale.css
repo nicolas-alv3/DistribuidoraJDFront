@@ -143,11 +143,23 @@
     padding: 1% 10%
 }
 
-.button-container{
+.button-container-seeSale{
     position: relative;
     width: 350px;
     padding-bottom: 15%;
     margin:auto
+}
+
+.button-container-addSale{
+    position: relative;
+    width:150px;
+    padding-bottom: 15%;
+    margin:auto
+}
+
+.backSaleButton{
+    color: whitesmoke !important;
+    background-color:teal!important;
 }
 
 .sendSaleButton{
@@ -205,7 +217,7 @@
     display: inline-block;
     margin: 0 2.5%;
     width: 55%;
-    height: inherit;
+    height: 160px;
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.11);
@@ -219,7 +231,7 @@
     border-radius: 10px;
     display: inline-block;
     width: 30%;
-    height: inherit;
+    height: 160px;
     overflow: auto;
     margin: 0;
     position: absolute;

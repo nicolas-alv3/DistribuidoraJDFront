@@ -12,7 +12,6 @@ import SaleItem from './SaleItem';
 
 export default class SeeSale extends React.Component {
   getCigarQuantity(item) {
-    console.log(item);
     if (item.product.category === 'CIGARRILLOS') {
       return item.amount;
     }
@@ -22,6 +21,7 @@ export default class SeeSale extends React.Component {
   viewReport() {
     const cigarQuantity = this.props.location.state.sale.items
       .reduce((ac, i) => ac + this.getCigarQuantity(i), 0);
+      //console.log(this.props.location.state.sale.items)
     report(this.props.location.state.sale, cigarQuantity);
   }
 
@@ -51,8 +51,8 @@ export default class SeeSale extends React.Component {
 
   buttons() {
     return (
-      <div className="button-container">
-        <Fab className="sendSaleButton" variant="extended" onClick={() => this.back()}>
+      <div className="button-container-seeSale">
+        <Fab className="backSaleButton" variant="extended" onClick={() => this.back()}>
           <BackIcon />
           ATRAS
         </Fab>

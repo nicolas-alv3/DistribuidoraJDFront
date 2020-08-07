@@ -3454,3 +3454,71 @@ Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
 2020-08-04T18:34:02.227Z - info: Rendering request 4 finished in 874 ms
 2020-08-04T18:34:02.379Z - info: pdf-utils pdf processing was finished
 2020-08-04T18:34:02.381Z - info: Rendering request 3 finished in 11661 ms
+2020-08-07T00:06:51.301Z - info: Initializing jsreport@2.9.0 in development mode using configuration file: jsreport.config.json
+2020-08-07T00:06:51.305Z - info: Searching for available extensions in /home/nicolas/Proyectos/distribuidora-jd-front/jsreportapp/
+2020-08-07T00:06:51.320Z - info: Extensions location cache not found, crawling directories
+2020-08-07T00:07:00.302Z - info: Found 35 extensions
+2020-08-07T00:07:02.488Z - info: Setting http-server strategy for rendering
+2020-08-07T00:07:03.117Z - info: Using extension handlebars@2.1.0
+2020-08-07T00:07:03.146Z - info: Using extension jsrender@2.1.1
+2020-08-07T00:07:03.155Z - info: Using extension templates@2.4.0
+2020-08-07T00:07:03.179Z - info: Using extension import-export@2.0.0
+2020-08-07T00:07:03.712Z - info: Using extension freeze@2.0.0
+2020-08-07T00:07:03.727Z - info: Using extension cli@2.2.4
+2020-08-07T00:07:03.735Z - info: Using extension express@2.7.0
+2020-08-07T00:07:05.351Z - info: Using extension debug@2.1.3
+2020-08-07T00:07:05.366Z - info: Using extension tags@2.4.0
+2020-08-07T00:07:05.385Z - info: Using extension docx@2.7.0
+2020-08-07T00:07:05.411Z - info: Using extension chrome-pdf@1.8.0
+2020-08-07T00:07:06.226Z - info: Using extension fs-store@2.8.0
+2020-08-07T00:07:07.906Z - info: Using extension authorization@2.4.0
+2020-08-07T00:07:07.997Z - info: Using extension child-templates@1.4.0
+2020-08-07T00:07:08.051Z - info: Using extension browser-client@2.2.2
+2020-08-07T00:07:08.068Z - info: Using extension licensing@2.2.2
+2020-08-07T00:07:08.081Z - info: Using extension data@2.3.0
+2020-08-07T00:07:08.083Z - info: Using extension pptx@0.7.0
+2020-08-07T00:07:08.116Z - info: Using extension version-control@1.5.0
+2020-08-07T00:07:09.014Z - info: Using extension reports@2.4.0
+2020-08-07T00:07:09.084Z - info: Using extension text@2.0.0
+2020-08-07T00:07:09.111Z - info: Using extension base@2.0.2
+2020-08-07T00:07:09.119Z - info: Using extension static-pdf@0.4.0
+2020-08-07T00:07:09.220Z - info: Using extension studio@2.9.0
+2020-08-07T00:07:10.097Z - info: Using extension pdf-utils@1.8.0
+2020-08-07T00:07:10.682Z - info: Using extension scripts@2.5.0
+2020-08-07T00:07:10.702Z - info: Using extension html-to-xlsx@2.7.0
+2020-08-07T00:07:16.197Z - info: html-to-xlsx detected chrome as available html engine
+2020-08-07T00:07:16.199Z - info: Using extension assets@1.6.0
+2020-08-07T00:07:16.298Z - info: Using extension studio-theme-dark@0.3.0
+2020-08-07T00:07:16.308Z - info: Using extension scheduling@2.4.0
+2020-08-07T00:07:16.545Z - info: Using extension xlsx@2.4.0
+2020-08-07T00:07:18.017Z - info: Using extension sample-template@2.5.1
+2020-08-07T00:07:18.046Z - info: Using extension resources@2.1.0
+2020-08-07T00:07:18.051Z - info: Using extension public-templates@2.1.0
+2020-08-07T00:07:18.058Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2020-08-07T00:07:18.058Z - info: Using fs provider for template store.
+2020-08-07T00:07:18.088Z - info: fs store is persisting using fs
+2020-08-07T00:07:18.093Z - info: fs store is synchronizing using fs
+2020-08-07T00:07:18.145Z - info: fs store is loading data
+2020-08-07T00:07:18.447Z - info: fs store is initialized successfully
+2020-08-07T00:07:18.528Z - info: Creating default express app.
+2020-08-07T00:07:18.766Z - info: jsreport server successfully started on http port: 5488
+2020-08-07T00:07:18.768Z - info: fs store emits sockets to synchronize underlying changes with studio
+2020-08-07T00:07:18.973Z - info: Verifying license key free
+2020-08-07T00:07:20.426Z - info: Using enterprise trial license
+2020-08-07T00:07:20.443Z - info: reporter initialized
+2020-08-07T00:08:13.233Z - info: Starting rendering request 1 (user: null)
+2020-08-07T00:08:13.240Z - info: Rendering template { name: DistribuidoraJD-main, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-08-07T00:08:26.604Z - info: pdf-utils is starting pdf processing
+2020-08-07T00:08:29.551Z - info: Starting rendering request 2 (user: null)
+2020-08-07T00:08:29.564Z - info: Rendering template { name: DistribuidoraJD-header, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-08-07T00:08:30.633Z - info: Rendering request 2 finished in 1082 ms
+2020-08-07T00:08:31.072Z - info: pdf-utils pdf processing was finished
+2020-08-07T00:08:31.078Z - info: Rendering request 1 finished in 17845 ms
+2020-08-07T01:25:02.202Z - info: Starting rendering request 3 (user: null)
+2020-08-07T01:25:02.204Z - info: Rendering template { name: DistribuidoraJD-main, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-08-07T01:25:13.041Z - info: pdf-utils is starting pdf processing
+2020-08-07T01:25:13.263Z - info: Starting rendering request 4 (user: null)
+2020-08-07T01:25:13.265Z - info: Rendering template { name: DistribuidoraJD-header, recipe: chrome-pdf, engine: handlebars, preview: false }
+2020-08-07T01:25:14.758Z - info: Rendering request 4 finished in 1496 ms
+2020-08-07T01:25:14.912Z - info: pdf-utils pdf processing was finished
+2020-08-07T01:25:14.913Z - info: Rendering request 3 finished in 12712 ms

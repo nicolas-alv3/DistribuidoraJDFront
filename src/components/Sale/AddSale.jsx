@@ -47,6 +47,7 @@ export default class AddSale extends React.Component {
       description: '',
       allNames: [],
       snackbarMessage: '',
+      validCode: true,
     };
     this.handleEnter.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -125,13 +126,27 @@ export default class AddSale extends React.Component {
   }
 
   handleKeyPress(event) {
-    if (event.keyCode === 13 && event.ctrlKey) {
-      this.handleEnter();
+    if (event.keyCode === 13) {
+      this.handleEnter(event);
     }
   }
 
-  handleEnter() {
-    this.sendCurrentItem();
+  handleEnter(e) {
+    if (e.ctrlKey) {
+      this.sendCurrentItem();
+    } else if (document.activeElement.id === 'codeInput-AddSale') {
+      API.get(`/product/${e.target.value}`)
+        .then((product) => this.setState({
+          currentItem: new SaleItem(product, this.getQuantity()),
+          description: product.name,
+          validCode: true,
+        }))
+        .catch(() => this.setState({
+          currentItem: this.defaultItem(),
+          description: '',
+          validCode: false,
+        }));
+    }
   }
 
   totalPrice() {
@@ -208,15 +223,6 @@ export default class AddSale extends React.Component {
 
   handleCodeChange(e) {
     this.setState({ code: e.target.value });
-    API.get(`/product/${e.target.value}`)
-      .then((product) => this.setState({
-        currentItem: new SaleItem(product, this.getQuantity()),
-        description: product.name,
-      }))
-      .catch(() => this.setState({
-        currentItem: this.defaultItem(),
-        description: '',
-      }));
   }
 
   handleChangeName(e) {
@@ -281,7 +287,7 @@ export default class AddSale extends React.Component {
 
   sendSaleButton(isDisabled) {
     return (
-      <div className="button-container">
+      <div className="button-container-addSale">
         <Fab className="sendSaleButton" variant="extended" disabled={isDisabled} onClick={() => this.confirmDialog()}>
           <ListIcon />
           FINALIZAR
@@ -290,11 +296,11 @@ export default class AddSale extends React.Component {
     );
   }
 
-  searchCodeInput() {
+  searchCodeInput(isValidCode) {
     return (
       <div>
         <SearchIcon className="searchIcon" />
-        <TextField value={this.state.code} className="searchField" type="number" label="Código" onChange={(e) => this.handleCodeChange(e)} />
+        <TextField id="codeInput-AddSale" error={!isValidCode} value={this.state.code} className="searchField" type="number" label="Código" onChange={(e) => this.handleCodeChange(e)} />
       </div>
     );
   }
@@ -305,6 +311,7 @@ export default class AddSale extends React.Component {
         <SearchIcon className="searchIcon" />
         <Autocomplete
           options={this.state.allNames}
+          id="autocomplete-addSale"
           value={this.state.description}
           type="text"
           style={{
@@ -382,11 +389,11 @@ export default class AddSale extends React.Component {
     );
   }
 
-  renderGetProduct(quantityError) {
+  renderGetProduct(quantityError, isValidCode) {
     return (
       <li className="list-group-item get" key={-2}>
         <div className="row">
-          <div className="add-sale-code">{this.searchCodeInput()}</div>
+          <div className="add-sale-code">{this.searchCodeInput(isValidCode)}</div>
           <div className="add-sale-description">{this.searchDescriptionInput()}</div>
           <div className="add-sale-quantity">
             <TextField error={quantityError} type="number" className="cantField" value={this.state.packageAmount} label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
@@ -416,6 +423,7 @@ export default class AddSale extends React.Component {
   render() {
     const quantityError = this.state.currentItem.isError();
     const disabledButton = this.state.items.length <= 0;
+    const isValidCode = this.state.validCode;
     return (
       <div>
         <Header category="Nueva venta" />
@@ -424,7 +432,7 @@ export default class AddSale extends React.Component {
         </div>
         <ul className="list-group list">
           {this.renderHeader()}
-          {this.renderGetProduct(quantityError)}
+          {this.renderGetProduct(quantityError, isValidCode)}
           {this.renderItems()}
           {this.renderFooter()}
         </ul>
