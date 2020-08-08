@@ -4,6 +4,20 @@
     padding-top: 5%
 }
 
+.codeField-AddStock {
+    width: 40%;
+    padding: 2%;
+    margin: 2% 1% !important;
+    margin-right:8% !important
+}
+
+.introIcon-AddStock{
+    position: absolute !important;
+    bottom:58%;
+    left:43%;
+    float: right !important;
+}
+
 .add-stock {
     position: relative;
     bottom:7px

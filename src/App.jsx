@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/purchases" render={(props) => <Purchases {...props} />} />
         <Route exact path="/balance" render={(props) => <Balance {...props} />} />
         <Route exact path="/home" render={(props) => <Home {...props} />} />
-        <Route path="/" render={(props) => <Products {...props} />} />
+        <Route path="/" render={(props) => <Home {...props} />} />
       </Switch>
     </BrowserRouter>
   );

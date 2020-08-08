@@ -21,7 +21,6 @@ export default class SeeSale extends React.Component {
   viewReport() {
     const cigarQuantity = this.props.location.state.sale.items
       .reduce((ac, i) => ac + this.getCigarQuantity(i), 0);
-      //console.log(this.props.location.state.sale.items)
     report(this.props.location.state.sale, cigarQuantity);
   }
 

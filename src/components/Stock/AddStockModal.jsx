@@ -6,6 +6,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import IntroIcon from '@material-ui/icons/KeyboardReturn';
 import Swal from 'sweetalert2';
 import '../../style/AddModal.css';
 import '../../style/AddStockModal.css';
@@ -42,7 +43,6 @@ class AddStockModal extends React.Component {
 
   handleEnter() {
     if (document.activeElement.id === 'stockCodeInput') {
-      console.log('Deberia llamar a la api :D');
       API.get(`/product/${this.state.code}`)
         .then((res) => this.setState({ product: res }))
         .catch(() => this.setState({ product: { name: 'Producto inexistente' } }));
@@ -147,7 +147,8 @@ class AddStockModal extends React.Component {
           <DialogTitle>Editar stock</DialogTitle>
           <form className="form" noValidate autoComplete="off">
             <div className="Row">
-              <TextField error={isCodeError} type="number" value={this.state.code} className="textField" required id="stockCodeInput" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
+              <TextField error={isCodeError} type="number" value={this.state.code} className="codeField-AddStock" required id="stockCodeInput" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
+              <IntroIcon className="introIcon-AddStock" />
               <TextField value={this.state.product.name} disabled className="textField" label="Nombre" />
             </div>
             <div className="Row">

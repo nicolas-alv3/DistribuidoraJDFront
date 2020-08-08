@@ -5,17 +5,21 @@
     background-color: black;
 }
 
-.home-title {
-    position: absolute;
-    background:rgba(63, 81, 181, .3);
-    display: block;
+.home-title-container {
     width: 100%;
-    margin:15% 0;
-    padding:0 18%;
+    background:rgba(63, 81, 181, .3);
+}
+
+.home-title {
+    position: relative;
+    height: 140px;
+    width: 1100px;
+    margin:auto;
+    margin-top:200px;
     z-index: 20;
     color: white;
-    opacity: unset !important;
-    font-size: 90pt;
+    opacity: unset;
+    font-size: 8em;
     font-family:'Verdana, sans-serif';
 }
 
