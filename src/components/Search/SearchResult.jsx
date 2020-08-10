@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import React from 'react';
+import { CircularProgress } from '@material-ui/core';
 import Header from '../Header';
 import ProductList from '../Products/ProductList';
 import SaleList from '../Sale/SalesList';
 import API from '../../service/api';
 import Pages from '../Pages';
+import '../../style/Pagination.css';
 
 export default class SearchResult extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ export default class SearchResult extends React.Component {
       resultList: [],
       totalPages: 0,
       page: 0,
+      loading: true,
     };
   }
 
@@ -20,11 +23,19 @@ export default class SearchResult extends React.Component {
     if (this.props.location.state.previousPath === '/products') {
       console.log(`/search/product/${this.props.location.state.searchInput}/${this.state.page}`);
       API.get(`/search/product/${this.props.location.state.searchInput}/${this.state.page}`)
-        .then((res) => this.setState({ resultList: res.content, totalPages: res.totalPages }))
+        .then((res) => this.setState({
+          resultList: res.content,
+          totalPages: res.totalPages,
+          loading: false,
+        }))
         .catch((e) => console.log(e));
     } else {
       API.get(`/search/sale/${this.props.location.state.searchInput}/${this.state.page}`)
-        .then((res) => this.setState({ resultList: res.content, totalPages: res.totalPages }))
+        .then((res) => this.setState({
+          resultList: res.content,
+          totalPages: res.totalPages,
+          loading: false,
+        }))
         .catch((e) => console.log(e));
     }
   }
@@ -64,6 +75,7 @@ export default class SearchResult extends React.Component {
   }
 
   renderResult() {
+    if (this.state.loading) return <div className="spinner-container"><CircularProgress className="spinner" /></div>;
     if (this.props.location.state.previousPath === '/products') {
       return (
         <ProductList

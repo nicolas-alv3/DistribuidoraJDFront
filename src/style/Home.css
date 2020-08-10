@@ -13,14 +13,13 @@
 .home-title {
     position: relative;
     height: 140px;
-    width: 1100px;
+    width: fit-content;
     margin:auto;
     margin-top:200px;
     z-index: 20;
     color: white;
     opacity: unset;
     font-size: 8em;
-    font-family:'Verdana, sans-serif';
 }
 
 .home-layer {

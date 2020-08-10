@@ -1,4 +1,15 @@
 .pagination{
-    width: 35%;
+    width: fit-content;
     margin:10px auto;
+}
+
+.spinner {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.spinner-container {
+    width: fit-content !important;
+    height: fit-content;
+    margin-top:10%
 }
