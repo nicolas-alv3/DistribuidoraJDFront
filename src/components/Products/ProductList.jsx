@@ -35,7 +35,7 @@ export default class ProductList extends React.Component {
       'Producto correctamente eliminado',
       'success',
     );
-    window.location.reload();
+    window.location.reload(false);
   }
 
   delete(product) {

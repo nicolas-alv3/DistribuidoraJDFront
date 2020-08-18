@@ -24,8 +24,12 @@
 
 .add-sale-unit-price-header {
     width:12%;
-    text-align: center;
     margin-top: 7px;
+    text-align: center;
+}
+
+.add-sale-unit-price-header-title {
+    text-align: right;
 }
 
 .add-sale-total-price-header {
@@ -35,7 +39,7 @@
 }
 
 .add-sale-code {
-    width:13%;
+    width:15%;
 }
 
 .add-sale-description {
@@ -174,15 +178,16 @@
 }
 
 .searchIcon{
+    position: relative;
+    top:7px;
     width: 30%;
-    height: auto;
     margin-top:20px
 }
 
 .searchField{
     position: relative;
     top:4px;
-    width:80%
+    width:66%
 }
 
 .cantField{

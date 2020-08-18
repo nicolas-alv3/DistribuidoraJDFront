@@ -42,7 +42,7 @@ export default class AddSale extends React.Component {
       code: '',
       items: [],
       currentItem: this.defaultItem(),
-      unitAmount: 1,
+      unitAmount: 0,
       packageAmount: 0,
       description: '',
       allNames: [],
@@ -176,7 +176,7 @@ export default class AddSale extends React.Component {
   defaultItem() {
     return new SaleItem({
       unitPrice: 0, name: '...', amountPerPackage: 0, amountForDiscount: 0, packageDiscount: 0,
-    }, 1);
+    }, 0);
   }
 
   existCodeInItems() {
@@ -207,7 +207,7 @@ export default class AddSale extends React.Component {
       this.setState({
         code: '',
         currentItem: this.defaultItem(),
-        unitAmount: 1,
+        unitAmount: 0,
         packageAmount: 0,
         description: '',
       });
@@ -353,8 +353,8 @@ export default class AddSale extends React.Component {
           <div className="add-sale-code-header">Código</div>
           <div className="add-sale-description-header">Descripción</div>
           <div className="add-sale-quantity-header">Cantidad</div>
-          <div className="add-sale-package-discount-header">Bonificación</div>
-          <div className="add-sale-unit-price-header">P. unitario</div>
+          <div className="add-sale-package-discount-header">Bonif.</div>
+          <div className="add-sale-unit-price-header">$Unitario</div>
           <div className="add-sale-total-price-header">
             Subtotal
             <div className="sale-tooltip">

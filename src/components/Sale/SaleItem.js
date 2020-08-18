@@ -43,7 +43,10 @@ export default class SaleItem {
   }
 
   getPackageDiscount() {
-    return this.product.packageDiscount;
+    if (this.product.amountForDiscount <= this.getTotalAmount()) {
+      return this.product.packageDiscount;
+    }
+    return 0;
   }
 
   getCode() {

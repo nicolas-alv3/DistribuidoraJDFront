@@ -90,7 +90,7 @@ export default class AddModal extends React.Component {
       'Producto Creado',
       'success',
     );
-    window.location.reload();
+    window.location.reload(false);
   }
 
   error(message) {

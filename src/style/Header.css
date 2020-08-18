@@ -19,11 +19,23 @@
     display: inline-block;
     margin:0;
     padding:0;
-    width:20%;
+    width:fit-content;
 }
 
 .button2 {
     display: inline-block;
     float:right;
     padding:0;
+}
+
+@media (max-width:900px) { 
+    .category {
+        width :50%;
+    }
+}
+
+@media (max-width:700px) { 
+    .category {
+        width :40%;
+    }
 }

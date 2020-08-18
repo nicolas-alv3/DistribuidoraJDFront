@@ -17,7 +17,7 @@ class SalesList extends React.Component {
       'Producto correctamente eliminado',
       'success',
     );
-    window.location.reload();
+    window.location.reload(false);
   }
 
   delete(sale) {
@@ -51,11 +51,11 @@ class SalesList extends React.Component {
   buttons(sale) {
     return (
       <div className="row">
-        <div className="buttonsCol col">
-          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(sale)}>
+        <div className="col">
+          <Button className="delete-saleList" color="primary" aria-label="add" onClick={() => this.delete(sale)}>
             <DeleteIcon style={{ color: 'red' }} />
           </Button>
-          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.pushToSee(sale)}>
+          <Button className="see-saleList" color="primary" aria-label="add" onClick={() => this.pushToSee(sale)}>
             <SeeIcon style={{ color: 'lightblue' }} />
           </Button>
         </div>

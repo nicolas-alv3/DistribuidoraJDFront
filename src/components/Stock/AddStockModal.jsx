@@ -89,7 +89,7 @@ class AddStockModal extends React.Component {
       'Stock actualizado',
       'success',
     );
-    window.location.reload();
+    window.location.reload(false);
   }
 
   error() {
@@ -143,9 +143,9 @@ class AddStockModal extends React.Component {
     return (
       <div>
         <Button className="add-stock" variant="outlined" onClick={() => this.showModal(true)}>Modificar stock</Button>
-        <Dialog open={this.state.open}>
+        <Dialog open={this.state.open} className="">
           <DialogTitle>Editar stock</DialogTitle>
-          <form className="form" noValidate autoComplete="off">
+          <form className="form-addStock" noValidate autoComplete="off">
             <div className="Row">
               <TextField error={isCodeError} type="number" value={this.state.code} className="codeField-AddStock" required id="stockCodeInput" label="Codigo" onChange={(e) => this.handleCodeChange(e)} />
               <IntroIcon className="introIcon-AddStock" />

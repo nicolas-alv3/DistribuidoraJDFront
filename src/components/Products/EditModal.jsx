@@ -80,7 +80,7 @@ export default class EditModal extends React.Component {
       'Producto actualizado',
       'success',
     );
-    window.location.reload();
+    window.location.reload(false);
   }
 
   error(message) {
