@@ -1,6 +1,14 @@
 /* eslint-disable radix */
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import Container from '@material-ui/core/Container';
+import TableHead from '@material-ui/core/TableHead';
+import TableFooter from '@material-ui/core/TableFooter';
+import TableRow from '@material-ui/core/TableRow';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import PDFIcon from '@material-ui/icons/PictureAsPdf';
 import { Fab } from '@material-ui/core';
@@ -65,43 +73,51 @@ export default class SeeSale extends React.Component {
 
   renderHeader() {
     return (
-      <li className="list-group-item header" key={-1}>
-        <div className="row">
-          <div className="add-sale-code-header">Código</div>
-          <div className="add-sale-description-header">Descripción</div>
-          <div className="add-sale-quantity-header">Cantidad</div>
-          <div className="add-sale-package-discount-header">Bonificación</div>
-          <div className="add-sale-unit-price-header">P. unitario</div>
-          <div className="add-sale-total-price-header">Subtotal</div>
-        </div>
-      </li>
+      <TableHead key={-1}>
+        <TableRow>
+          <TableCell>Código</TableCell>
+          <TableCell>Descripción</TableCell>
+          <TableCell>Cantidad</TableCell>
+          <TableCell>Bonificación</TableCell>
+          <TableCell>P. unitario</TableCell>
+          <TableCell>Subtotal</TableCell>
+        </TableRow>
+      </TableHead>
     );
   }
 
   renderItems() {
     const saleItems = this.props.location.state.sale.items
       .map((i) => new SaleItem(i.product, i.amount));
-    return saleItems.map(
-      (item) => (
-        <li key={item.getCode()} className="list-group-item">
-          <div className="row">
-            <div className="add-sale-code-header">{item.getCode()}</div>
-            <div className="add-sale-description-header">{item.getDescription()}</div>
-            <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
-            <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
-            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice().toString())}</div>
-            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}</div>
-          </div>
-        </li>
-      ),
+    return (
+      <TableBody>{saleItems.map(
+        (item) => (
+          <TableRow key={item.getCode()}>
+            <TableCell>{item.getCode()}</TableCell>
+            <TableCell>{item.getDescription()}</TableCell>
+            <TableCell>{item.getTotalAmount()} u.</TableCell>
+            <TableCell>{item.getPackageDiscount()}%</TableCell>
+            <TableCell>{parsePesos(item.getUnitPrice().toString())}</TableCell>
+            <TableCell>{parsePesos(item.getTotalPrice().toString())}</TableCell>
+          </TableRow>
+        ),
+      )}
+      </TableBody>
     );
   }
 
   renderFooter() {
     return (
-      <li className="list-group-item footer" key={0}>
-        <div className="totalPrice">Total: ${this.props.location.state.sale.totalPrice}</div>
-      </li>
+      <TableFooter key={0}>
+        <TableRow>
+          <TableCell />
+          <TableCell />
+          <TableCell />
+          <TableCell />
+          <TableCell />
+          <TableCell><div style={{ fontSize: '25pt', color: 'green' }}>Total: ${this.props.location.state.sale.totalPrice}</div></TableCell>
+        </TableRow>
+      </TableFooter>
     );
   }
 
@@ -110,11 +126,19 @@ export default class SeeSale extends React.Component {
       <div>
         <Header category="Ver venta" button2={<p className="seeSale-date">{formatDate(this.props.location.state.sale.date)}</p>} />
         {this.clientBox()}{this.detailsBox()}
-        <ul className="list-group list">
-          {this.renderHeader()}
-          {this.renderItems()}
-          {this.renderFooter()}
-        </ul>
+        <Container style={{ margin: '30px 10px' }}>
+          <TableContainer>
+            <Table>
+              {this.renderHeader()}
+              {this.renderItems()}
+            </Table>
+            <div style={{
+              float: 'right', marginRight: '80px', fontSize: '25pt', color: 'green', border: '1px solid gray', borderRadius: '10px', padding: '10px',
+            }}
+            >Total: ${this.props.location.state.sale.totalPrice}
+            </div>
+          </TableContainer>
+        </Container>
         {this.buttons()}
       </div>
     );

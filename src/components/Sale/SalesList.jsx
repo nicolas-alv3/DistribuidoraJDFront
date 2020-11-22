@@ -4,6 +4,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import SeeIcon from '@material-ui/icons/Visibility';
 import EmptyIcon from '@material-ui/icons/NoteAddOutlined';
 import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import Swal from 'sweetalert2';
 import '../../style/ProductList.css';
 import '../../style/Pagination.css';
@@ -64,40 +70,41 @@ class SalesList extends React.Component {
   }
 
   mapsales() {
-    return this.props.sales.map(
-      (sale) => (
-        <li className="list-group-item">
-          <div className="row">
-            <div className="col">{sale.id}</div>
-            <div className="col">{sale.client.name || 'Sin nombre'}</div>
-            <div className="col">{sale.date}</div>
-            <div className="col">{sale.amountOfProducts}</div>
-            <div className="col">{parsePesos(sale.totalPrice.toString())}</div>
-            <div className="col">{this.buttons(sale)}</div>
-          </div>
-        </li>
-      ),
+    return (
+      <TableBody>{this.props.sales.map(
+        (sale) => (
+          <TableRow>
+            <TableCell>{sale.id}</TableCell>
+            <TableCell>{sale.client.name || 'Sin nombre'}</TableCell>
+            <TableCell>{sale.date}</TableCell>
+            <TableCell>{sale.amountOfProducts}</TableCell>
+            <TableCell>{parsePesos(sale.totalPrice.toString())}</TableCell>
+            <TableCell>{this.buttons(sale)}</TableCell>
+          </TableRow>
+        ),
+      )}
+      </TableBody>
     );
   }
 
   listHeader() {
     return (
-      <li className="list-group-item list-group-item-secondary">
-        <div className="row">
-          <div className="col">Código</div>
-          <div className="col">Cliente</div>
-          <div className="col">Fecha</div>
-          <div className="col">Cant. Productos</div>
-          <div className="col">Monto total</div>
-          <div className="col" />
-        </div>
-      </li>
+      <TableHead>
+        <TableRow>
+          <TableCell>Código</TableCell>
+          <TableCell>Cliente</TableCell>
+          <TableCell>Fecha</TableCell>
+          <TableCell>Cant. Productos</TableCell>
+          <TableCell>Monto total</TableCell>
+          <TableCell />
+        </TableRow>
+      </TableHead>
     );
   }
 
   renderList() {
     if (this.props.sales !== undefined && this.props.sales.length > 0) {
-      return <div>{this.listHeader()}{this.mapsales()}</div>;
+      return <TableContainer><Table>{this.listHeader()}{this.mapsales()}</Table></TableContainer>;
     }
     return (
       <div>

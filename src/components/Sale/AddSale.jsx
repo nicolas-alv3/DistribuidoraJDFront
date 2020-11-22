@@ -2,16 +2,16 @@
 /* eslint-disable radix */
 import React from 'react';
 import Swal from 'sweetalert2';
-import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Divider from '@material-ui/core/Divider';
-import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SendIcon from '@material-ui/icons/Send';
 import SearchIcon from '@material-ui/icons/Search';
-import { Fab } from '@material-ui/core';
+import {
+  Fab, Table, TableRow,
+  TableBody, TableContainer, TableCell, Container, TableHead, Snackbar, Divider, TextField,
+} from '@material-ui/core';
 import ListIcon from '@material-ui/icons/PlaylistAddCheck';
 import Header from '../Header';
 import '../../style/AddSale.css';
@@ -89,7 +89,6 @@ export default class AddSale extends React.Component {
 
   done(res) {
     Swal.fire('¡Listo!', 'La venta se ha realizado con éxito', 'success');
-    console.log(res);
     this.props.history.push({
       pathname: '/seeSale',
       state: {
@@ -348,75 +347,75 @@ export default class AddSale extends React.Component {
 
   renderHeader() {
     return (
-      <li className="list-group-item header" key={-1}>
-        <div className="row">
-          <div className="add-sale-code-header">Código</div>
-          <div className="add-sale-description-header">Descripción</div>
-          <div className="add-sale-quantity-header">Cantidad</div>
-          <div className="add-sale-package-discount-header">Bonificación</div>
-          <div className="add-sale-unit-price-header">P. unitario</div>
-          <div className="add-sale-total-price-header">
+      <TableHead key={-1}>
+        <TableRow className="row">
+          <TableCell className="add-sale-code-header">Código</TableCell>
+          <TableCell className="add-sale-description-header">Descripción</TableCell>
+          <TableCell className="add-sale-quantity-header">Cantidad</TableCell>
+          <TableCell className="add-sale-package-discount-header">Bonificación</TableCell>
+          <TableCell className="add-sale-unit-price-header">P. unitario</TableCell>
+          <TableCell className="add-sale-total-price-header">
             Subtotal
             <div className="sale-tooltip">
               <InfoTooltip text="Es recomendable utilizar las teclas TAB y SHIFT+TAB para navegar en los formularios. Y CRTL + ENTER para agregar el producto" />
             </div>
-          </div>
-        </div>
-      </li>
+          </TableCell>
+        </TableRow>
+      </TableHead>
     );
   }
 
   renderItems() {
     return this.state.items.map(
       (item) => (
-        <li key={item.getCode()} className="list-group-item">
-          <div className="row">
-            <div className="add-sale-code-header">{item.getCode()}</div>
-            <div className="add-sale-description-item">
-              <img className="sale-category-icon" src={this.getIcon(item.getCategory())} alt="categoria" />
-              {item.getDescription()}
-            </div>
-            <div className="add-sale-quantity-header">{item.getTotalAmount()} u.</div>
-            <div className="add-sale-package-discount-header">{item.getPackageDiscount()}%</div>
-            <div className="add-sale-unit-price-header">{parsePesos(item.getUnitPrice().toString())}</div>
-            <div className="add-sale-total-price-header">{parsePesos(item.getTotalPrice().toString())}
-              <DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} />
-              <EditIcon className="editIcon" onClick={() => this.edit(item)} />
-            </div>
-          </div>
-        </li>
+        <TableRow key={item.getCode()}>
+          <TableCell>{item.getCode()}</TableCell>
+          <TableCell>
+            <img className="sale-category-icon" src={this.getIcon(item.getCategory())} alt="categoria" />
+            {item.getDescription()}
+          </TableCell>
+          <TableCell>{item.getTotalAmount()} u.</TableCell>
+          <TableCell>{item.getPackageDiscount()}%</TableCell>
+          <TableCell>{parsePesos(item.getUnitPrice().toString())}</TableCell>
+          <TableCell>{parsePesos(item.getTotalPrice().toString())}
+            <DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} />
+            <EditIcon className="editIcon" onClick={() => this.edit(item)} />
+          </TableCell>
+        </TableRow>
       ),
     );
   }
 
   renderGetProduct(quantityError, isValidCode) {
     return (
-      <li className="list-group-item get" key={-2}>
-        <div className="row">
-          <div className="add-sale-code">{this.searchCodeInput(isValidCode)}</div>
-          <div className="add-sale-description">{this.searchDescriptionInput()}</div>
-          <div className="add-sale-quantity">
-            <TextField error={quantityError} type="number" className="cantField" value={this.state.packageAmount} label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
-            <Divider className="vertical-divider" orientation="vertical" />
-            <TextField error={quantityError} type="number" className="cantField" value={this.state.unitAmount} label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
-            <TextField disabled error={quantityError} className="cantField" value={`${this.state.currentItem.getStock() || 0} u.`} type="text" label="Stock" />
-          </div>
-          <div className="add-sale-package-discount">{this.state.currentItem.getPackageDiscount()}%</div>
-          <div className="add-sale-unit-price">{parsePesos(this.state.currentItem.getUnitPrice().toString())}</div>
-          <div className="add-sale-total-price">{parsePesos(this.state.currentItem.getTotalPrice().toString())}
-            <SendIcon className="sendIcon" onClick={() => this.sendCurrentItem()} />
-          </div>
-        </div>
-      </li>
+      <TableRow key={-2}>
+        <TableCell>{this.searchCodeInput(isValidCode)}</TableCell>
+        <TableCell>{this.searchDescriptionInput()}</TableCell>
+        <TableCell>
+          <TextField error={quantityError} type="number" className="cantField" value={this.state.packageAmount} label="Bulto/s" onChange={(e) => this.handlePackageAmount(e)} />
+          <Divider className="vertical-divider" orientation="vertical" />
+          <TextField error={quantityError} type="number" className="cantField" value={this.state.unitAmount} label="Unidad/es" onChange={(e) => this.handleUnitAmount(e)} />
+          <TextField disabled error={quantityError} className="cantField" value={`${this.state.currentItem.getStock() || 0} u.`} type="text" label="Stock" />
+        </TableCell>
+        <TableCell>{this.state.currentItem.getPackageDiscount()}%</TableCell>
+        <TableCell>{parsePesos(this.state.currentItem.getUnitPrice().toString())}</TableCell>
+        <TableCell>{parsePesos(this.state.currentItem.getTotalPrice().toString())}
+          <SendIcon className="sendIcon" onClick={() => this.sendCurrentItem()} />
+        </TableCell>
+      </TableRow>
     );
   }
 
   renderFooter() {
     return (
-      <li className="list-group-item footer" key={0}>
-        <p className="totalPrice">Total: {parsePesos(this.totalPrice().toString())}</p>
-        <p className="cigarAmount">Atados: {this.cigarAmount()}</p>
-      </li>
+      <TableRow key={0}>
+        <TableCell><p className="cigarAmount">Atados: {this.cigarAmount()}</p></TableCell>
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell />
+        <TableCell><p className="totalPrice">Total: {parsePesos(this.totalPrice().toString())}</p></TableCell>
+      </TableRow>
     );
   }
 
@@ -430,12 +429,18 @@ export default class AddSale extends React.Component {
         <div className="add-sale-cient-container">
           {this.clientBox()}{this.detailsBox()}
         </div>
-        <ul className="list-group list">
-          {this.renderHeader()}
-          {this.renderGetProduct(quantityError, isValidCode)}
-          {this.renderItems()}
-          {this.renderFooter()}
-        </ul>
+        <Container>
+          <TableContainer>
+            <Table>
+              {this.renderHeader()}
+              <TableBody>
+                {this.renderGetProduct(quantityError, isValidCode)}
+                {this.renderItems()}
+              </TableBody>
+              {this.renderFooter()}
+            </Table>
+          </TableContainer>
+        </Container>
         {this.sendSaleButton(disabledButton)}
         {this.snackBar()}
       </div>

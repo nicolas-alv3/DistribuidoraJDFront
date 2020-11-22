@@ -1,34 +1,18 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EmptyIcon from '@material-ui/icons/NoteAddOutlined';
-import Button from '@material-ui/core/Button';
+import {
+  Button, Table, TableBody, TableCell, TableContainer, Container, TableHead, TableRow,
+} from '@material-ui/core';
 import Swal from 'sweetalert2';
 import EditModal from './EditModal';
 import ShowModal from './ShowModal';
 import '../../style/ProductList.css';
 import API from '../../service/api';
-import SodaIcon from '../../icons/soda.png';
-import DrugsIcon from '../../icons/drugs.png';
-import CigarIcon from '../../icons/cigar.png';
-import CookieIcon from '../../icons/cookie.png';
-import CandyIcon from '../../icons/candy.png';
-import OtherIcon from '../../icons/question.png';
 import { parsePesos } from '../../utils/utils';
+import Category from './category.js';
 
 export default class ProductList extends React.Component {
-  getIcon(product) {
-    let res = '';
-    switch (product.category) {
-      case 'GASEOSAS': res = SodaIcon; break;
-      case 'ANALGESICOS': res = DrugsIcon; break;
-      case 'CIGARRILLOS': res = CigarIcon; break;
-      case 'GALLETITAS': res = CookieIcon; break;
-      case 'GOLOSINAS': res = CandyIcon; break;
-      default: res = OtherIcon; break;
-    }
-    return res;
-  }
-
   deleteSuccess() {
     Swal.fire(
       'Eliminado!',
@@ -59,18 +43,17 @@ export default class ProductList extends React.Component {
 
   buttons(product) {
     return (
-      <div className="buttons-container">
-        <div className="item-button-show">
-          <ShowModal product={product} />
-        </div>
-        <div className="item-button-edit">
-          <EditModal product={product} />
-        </div>
-        <div className="item-button-delete">
-          <Button className="buttons" color="primary" aria-label="add" onClick={() => this.delete(product)}>
-            <DeleteIcon style={{ color: 'red' }} />
-          </Button>
-        </div>
+      <div style={{ width: '200px', magin: 0, padding: 0 }}>
+        <Button
+          className="buttons"
+          color="primary"
+          aria-label="add"
+          onClick={() => this.delete(product)}
+        >
+          <DeleteIcon style={{ color: 'red' }} />
+        </Button>
+        <ShowModal product={product} />
+        <EditModal product={product} />
       </div>
     );
   }
@@ -86,43 +69,48 @@ export default class ProductList extends React.Component {
   }
 
   mapProducts() {
-    return this.props.products.map(
-      (product) => (
-        <li key={product.code} className={`list-group-item ${this.cssClass(product)}`}>
-          <div className="row">
-            <div className="col">{product.code}</div>
-            <div className="col">
-              <img className="list-category-icon" src={this.getIcon(product)} alt="categoria" />
+    return (
+      <TableBody> {this.props.products.map(
+        (product) => (
+          <TableRow key={product.code}>
+            <TableCell size="small">{product.code}</TableCell>
+            <TableCell>
+              {new Category(product.category).getIcon()}
               {product.name}
-            </div>
-            <div className="col">{parsePesos(product.unitPrice.toString())}</div>
-            <div className="col">{product.packageDiscount}%</div>
-            <div className="col">{product.stock}u.</div>
-            <div className="col">{this.buttons(product)}</div>
-          </div>
-        </li>
-      ),
+            </TableCell>
+            <TableCell>{parsePesos(product.unitPrice.toString())}</TableCell>
+            <TableCell>{product.packageDiscount}%</TableCell>
+            <TableCell>{product.stock}u.</TableCell>
+            <TableCell align="right">{this.buttons(product)}</TableCell>
+          </TableRow>
+        ),
+      )}
+      </TableBody>
     );
   }
 
   listHeader() {
     return (
-      <li key={-1} className="list-group-item list-group-item-secondary">
-        <div className="row">
-          <div className="col">Código</div>
-          <div className="col">Nombre</div>
-          <div className="col">Precio unitario</div>
-          <div className="col">Desc. mayorista</div>
-          <div className="col">Stock</div>
-          <div className="col" />
-        </div>
-      </li>
+      <TableHead>
+        <TableRow>
+          <TableCell size="small">Código</TableCell>
+          <TableCell>Nombre</TableCell>
+          <TableCell>Precio unitario</TableCell>
+          <TableCell>Desc. mayorista</TableCell>
+          <TableCell>Stock</TableCell>
+          <TableCell size="medium" />
+        </TableRow>
+      </TableHead>
     );
   }
 
   renderList() {
     if (this.props.products.length > 0) {
-      return <div>{this.listHeader()}{this.mapProducts()}</div>;
+      return (
+        <TableContainer>
+          <Table>{this.listHeader()}{this.mapProducts()}</Table>
+        </TableContainer>
+      );
     }
     return (
       <div>
@@ -139,9 +127,9 @@ export default class ProductList extends React.Component {
   render() {
     return (
       <div>
-        <ul className="list list-group">
+        <Container>
           {this.renderList()}
-        </ul>
+        </Container>
       </div>
     );
   }

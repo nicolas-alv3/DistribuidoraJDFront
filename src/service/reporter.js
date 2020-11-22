@@ -6,7 +6,6 @@ function pad(n, width, z) {
   // // pad(10, 4);      // 0010
   // // pad(9, 4);       // 0009
   // // pad(123, 4);     // 0123
-
   // pad(10, 4, '-'); // --10
 
   z = z || '0';
@@ -25,6 +24,7 @@ function getData(sale, cigars) {
     items: sale.items.map((i) => ({
       description: i.product.name,
       amount: i.amount,
+      discount: i.amount >= i.product.amountForDiscount ? i.product.packageDiscount : 0,
       unitPrice: i.product.unitPrice,
       subTotal: i.price,
     })),

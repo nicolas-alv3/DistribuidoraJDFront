@@ -34,14 +34,14 @@ export default class ShowModal extends React.Component {
   buttons() {
     return (
       <div className="show-add-button-container">
-          <Fab
-            className="show-add-check"
-            color="primary"
-            aria-label="add"
-            onClick={() => this.closeDialog()}
-          >
-            <CheckIcon />
-          </Fab>
+        <Fab
+          className="show-add-check"
+          color="primary"
+          aria-label="add"
+          onClick={() => this.closeDialog()}
+        >
+          <CheckIcon />
+        </Fab>
       </div>
     );
   }
@@ -175,12 +175,15 @@ export default class ShowModal extends React.Component {
           <hr />
           <div className="Row show-text">
             Si vendés mas de <b>{this.props.product.amountForDiscount} unidades</b>,
-              el precio será <b>{parsePesos(this.calculatePriceWithDiscount().toString())}</b>.
+            el precio será <b>{parsePesos(this.calculatePriceWithDiscount().toString())}</b>.
           </div>
           <hr />
           <div className="Row show-text">
-            Las unidades en stock corresponden a <b>{Math.floor(this.props.product.stock / this.props.product.amountPerPackage)} bulto/s </b>,
-              y <b>{this.props.product.stock % this.props.product.amountPerPackage} unidad/es</b>.
+            Las unidades en stock corresponden a
+            <b>
+              { Math.floor(this.props.product.stock / this.props.product.amountPerPackage)} bulto/s
+            </b>,
+            y <b>{this.props.product.stock % this.props.product.amountPerPackage} unidad/es</b>.
           </div>
           {this.buttons()}
         </form>
