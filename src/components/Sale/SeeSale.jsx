@@ -73,7 +73,7 @@ export default class SeeSale extends React.Component {
 
   renderHeader() {
     return (
-      <TableHead key={-1}>
+      <TableHead key={-1} style={{ backgroundColor: '#a3aff5' }}>
         <TableRow>
           <TableCell>Código</TableCell>
           <TableCell>Descripción</TableCell>

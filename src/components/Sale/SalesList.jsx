@@ -90,7 +90,7 @@ class SalesList extends React.Component {
   listHeader() {
     return (
       <TableHead>
-        <TableRow>
+        <TableRow style={{ backgroundColor: '#a3aff5' }}>
           <TableCell>Código</TableCell>
           <TableCell>Cliente</TableCell>
           <TableCell>Fecha</TableCell>

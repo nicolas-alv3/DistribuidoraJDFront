@@ -92,7 +92,7 @@ export default class ProductList extends React.Component {
   listHeader() {
     return (
       <TableHead>
-        <TableRow>
+        <TableRow style={{ backgroundColor: '#a3aff5' }}>
           <TableCell size="small">Código</TableCell>
           <TableCell>Nombre</TableCell>
           <TableCell>Precio unitario</TableCell>

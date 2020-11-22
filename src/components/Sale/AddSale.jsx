@@ -1,6 +1,11 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable radix */
 import React from 'react';
+import {
+  InputAdornment,
+  Fab, Table, TableRow,
+  TableBody, TableContainer, TableCell, Container, TableHead, Snackbar, Divider, TextField,
+} from '@material-ui/core';
 import Swal from 'sweetalert2';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -8,10 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SendIcon from '@material-ui/icons/Send';
 import SearchIcon from '@material-ui/icons/Search';
-import {
-  Fab, Table, TableRow,
-  TableBody, TableContainer, TableCell, Container, TableHead, Snackbar, Divider, TextField,
-} from '@material-ui/core';
+
 import ListIcon from '@material-ui/icons/PlaylistAddCheck';
 import Header from '../Header';
 import '../../style/AddSale.css';
@@ -101,12 +103,12 @@ export default class AddSale extends React.Component {
     if (b) {
       const body = {
         client: {
-          name: this.state.name,
-          address: this.state.address,
-          dni: this.state.dni,
+          name: this.state.name || '',
+          address: this.state.address || '',
+          dni: this.state.dni || 0,
         },
         saleItems: this.state.items.map((i) => i.getDTO()),
-        details: this.state.details,
+        details: this.state.details || '',
       };
       API.post('/sale', body)
         .then((res) => this.done(res))
@@ -298,8 +300,22 @@ export default class AddSale extends React.Component {
   searchCodeInput(isValidCode) {
     return (
       <div>
-        <SearchIcon className="searchIcon" />
-        <TextField id="codeInput-AddSale" error={!isValidCode} value={this.state.code} className="searchField" type="number" label="Código" onChange={(e) => this.handleCodeChange(e)} />
+        <TextField
+          id="codeInput-AddSale"
+          error={!isValidCode}
+          value={this.state.code}
+          className="searchField"
+          type="number"
+          label="Código"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          onChange={(e) => this.handleCodeChange(e)}
+        />
       </div>
     );
   }
@@ -307,19 +323,28 @@ export default class AddSale extends React.Component {
   searchDescriptionInput() {
     return (
       <div>
-        <SearchIcon className="searchIcon" />
         <Autocomplete
           options={this.state.allNames}
           id="autocomplete-addSale"
           value={this.state.description}
           type="text"
-          style={{
-            width: '70%', display: 'inline-block', position: 'relative', top: '-25px',
-          }}
           getOptionLabel={(option) => option}
           label="Descripción"
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          renderInput={(params) => <TextField {...params} label="Descripción" />}
+          renderInput={(params) => (
+            <div ref={params.InputProps.ref}>
+              <TextField
+                label="Descripción"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                {...params.inputProps}
+              />
+            </div>
+          )}
           onChange={(_, newValue) => this.handleDescriptionChange(newValue)}
         />
       </div>
@@ -347,7 +372,7 @@ export default class AddSale extends React.Component {
 
   renderHeader() {
     return (
-      <TableHead key={-1}>
+      <TableHead key={-1} style={{ backgroundColor: '#a3aff5' }}>
         <TableRow className="row">
           <TableCell className="add-sale-code-header">Código</TableCell>
           <TableCell className="add-sale-description-header">Descripción</TableCell>
@@ -360,6 +385,7 @@ export default class AddSale extends React.Component {
               <InfoTooltip text="Es recomendable utilizar las teclas TAB y SHIFT+TAB para navegar en los formularios. Y CRTL + ENTER para agregar el producto" />
             </div>
           </TableCell>
+          <TableCell />
         </TableRow>
       </TableHead>
     );
@@ -378,8 +404,10 @@ export default class AddSale extends React.Component {
           <TableCell>{item.getPackageDiscount()}%</TableCell>
           <TableCell>{parsePesos(item.getUnitPrice().toString())}</TableCell>
           <TableCell>{parsePesos(item.getTotalPrice().toString())}
-            <DeleteIcon className="deleteIcon" onClick={() => this.delete(item)} />
-            <EditIcon className="editIcon" onClick={() => this.edit(item)} />
+          </TableCell>
+          <TableCell>
+            <EditIcon style={{ color: 'blue', marginRight: '20px' }} onClick={() => this.edit(item)} />
+            <DeleteIcon style={{ color: 'red' }} onClick={() => this.delete(item)} />
           </TableCell>
         </TableRow>
       ),
@@ -388,7 +416,7 @@ export default class AddSale extends React.Component {
 
   renderGetProduct(quantityError, isValidCode) {
     return (
-      <TableRow key={-2}>
+      <TableRow key={-2} style={{ backgroundColor: '#f0e285' }}>
         <TableCell>{this.searchCodeInput(isValidCode)}</TableCell>
         <TableCell>{this.searchDescriptionInput()}</TableCell>
         <TableCell>
@@ -399,9 +427,8 @@ export default class AddSale extends React.Component {
         </TableCell>
         <TableCell>{this.state.currentItem.getPackageDiscount()}%</TableCell>
         <TableCell>{parsePesos(this.state.currentItem.getUnitPrice().toString())}</TableCell>
-        <TableCell>{parsePesos(this.state.currentItem.getTotalPrice().toString())}
-          <SendIcon className="sendIcon" onClick={() => this.sendCurrentItem()} />
-        </TableCell>
+        <TableCell>{parsePesos(this.state.currentItem.getTotalPrice().toString())}</TableCell>
+        <TableCell><SendIcon style={{ color: 'green' }} onClick={() => this.sendCurrentItem()} /></TableCell>
       </TableRow>
     );
   }
@@ -409,12 +436,8 @@ export default class AddSale extends React.Component {
   renderFooter() {
     return (
       <TableRow key={0}>
-        <TableCell><p className="cigarAmount">Atados: {this.cigarAmount()}</p></TableCell>
-        <TableCell />
-        <TableCell />
-        <TableCell />
-        <TableCell />
-        <TableCell><p className="totalPrice">Total: {parsePesos(this.totalPrice().toString())}</p></TableCell>
+        <p className="cigarAmount">Atados: {this.cigarAmount()}</p>
+        <p className="totalPrice" style={{ position: 'absolute', right: '100px' }}>Total: {parsePesos(this.totalPrice().toString())}</p>
       </TableRow>
     );
   }

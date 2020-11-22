@@ -35,10 +35,7 @@ class AddStockModal extends React.Component {
   }
 
   getBody() {
-    if (this.state.addButton) {
-      return { quantity: this.state.quantity, op: 'add' };
-    }
-    return { quantity: this.state.quantity, op: 'substract' };
+    return { amount: this.state.quantity, add: this.state.addButton };
   }
 
   handleEnter() {

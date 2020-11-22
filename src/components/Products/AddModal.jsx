@@ -104,14 +104,14 @@ export default class AddModal extends React.Component {
   post() {
     this.closeDialog();
     const body = {
-      name: this.state.name,
-      code: this.state.code,
-      unitPrice: this.state.unitPrice,
-      packageDiscount: this.state.packageDiscount,
-      amountPerPackage: this.state.amountPerPackage,
-      amountForDiscount: this.state.amountForDiscount,
-      stock: this.state.stock,
-      category: this.state.category,
+      name: this.state.name || '',
+      code: this.state.code || '',
+      unitPrice: this.state.unitPrice || 0,
+      packageDiscount: this.state.packageDiscount || 0,
+      amountPerPackage: this.state.amountPerPackage || 0,
+      amountForDiscount: this.state.amountForDiscount || 0,
+      stock: this.state.stock || 0,
+      category: this.state.category || '',
     };
     API.post('/product', body)
       .then(() => this.productCreated())

@@ -174,14 +174,12 @@
 }
 
 .searchIcon{
-    width: 30%;
+    width: 20%;
     height: auto;
     margin-top:20px
 }
 
 .searchField{
-    position: relative;
-    top:4px;
     width:80%
 }
 
@@ -244,8 +242,5 @@
 .seeSale-date{
     font-size: 35pt;
     color:gray;
-    position: absolute;
-    top:85px;
-    right: 40px;
-    
+    margin: 0 
 }
